@@ -6,24 +6,52 @@ class CExample_03:
     # 초기화
 	@classmethod
 	def Start(cls, args):
-		print("수식 입력 : ", end = "")
-		oTokenList = input().split()
+		"""
+		print 메서드란?
+		- 입력으로 전달 된 데이터를 콘솔 창에 출력하는 역할을 수행한다.
+		
+		해당 메서드는 문자열을 비롯한 숫자형 등 모든 자료형 데이터를 출력하는 것이 가능하기 때문에 다른 고수준 언어처럼 복잡한 문법과 규칙을
+		몰라서 손쉽게 원하는 데이터를 출력하는 것이 가능하다.
 
-		nLhs = int(oTokenList[0])
-		nRhs = int(oTokenList[2])
+		input 메서드란?
+		- 콘솔 창으로부터 데이터를 입력 받는 역할을 수행한다.
 
-		# + 일 경우
-		if oTokenList[1] == "+":
-			print(f"{nLhs} + {nRhs} = {nLhs + nRhs}")
-		# - 일 경우
-		elif oTokenList[1] == "-":
-			print(f"{nLhs} - {nRhs} = {nLhs - nRhs}")
-		# * 일 경우
-		elif oTokenList[1] == "*":
-			print(f"{nLhs} * {nRhs} = {nLhs * nRhs}")
-		# / 일 경우
-		elif oTokenList[1] == "/":
-			print(f"{nLhs} / {nRhs} = {nLhs / nRhs}")
+		해당 메서드를 활용하면 프로그램이 실행 중에 필요한 데이터를 사용자로부터 입력을 받는 것이 가능하기 때문에 print 메서드와 더불어 콘솔
+		프로그램에서 가장 많이 활용되는 메서드 중 하나이다.
+
+		split 메서드란?
+		- 주로 문자열 데이터를 특정 문자를 기준으로 분할 시킬 때 활용되는 메서드이다. 또한, 해당 메서드는 반환 값으로 리스트 형 데이터를
+		반환하기 때문에 해당 결과를 활용하면 분할 된 데이터를 손쉽게 제어하는 것이 가능하다.
+		"""
+		oTokenList = input("수식 입력 : ").split()
+
+		"""
+		len 메서드란?
+		- 특정 컬렉션 데이터에 저장 된 요소의 개수를 반환하는 역할을 수행한다. (즉, 해당 메서드를 활용하면 문자열 뿐만 아니라 다양한 컬렉션의
+		길이 (요소 개수) 를 계산하는 것이 가능하다.)
+		"""
+		if len(oTokenList) >= 3:
+			nLhs = int(oTokenList[0])
+			nRhs = int(oTokenList[2])
+
+			print("\n=====> 수식 입력 결과 <=====")
+
+			"""
+			문자열 포맷팅이란?
+			- 
+			"""
+			# + 일 경우
+			if oTokenList[1] == "+":
+				print(f"{nLhs} + {nRhs} = {nLhs + nRhs}")
+			# - 일 경우
+			elif oTokenList[1] == "-":
+				print(f"{nLhs} - {nRhs} = {nLhs - nRhs}")
+			# * 일 경우
+			elif oTokenList[1] == "*":
+				print(f"{nLhs} * {nRhs} = {nLhs * nRhs}")
+			# / 일 경우
+			elif oTokenList[1] == "/":
+				print(f"{nLhs} / {nRhs} = {nLhs / nRhs}")
 		
 # 메인 모듈 일 경우
 if __name__ == "__main__":
