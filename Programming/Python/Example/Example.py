@@ -20,7 +20,7 @@ from Classes.Example_15.CExample_15 import *
 """
 Python 프로젝트 주제
 - Example_03 (Python 기초)
-- Example_04 (변수, 연산자, 제어문)
+- Example_04 (연산자, 제어문)
 - Example_05
 - Example_06
 - Example_07
@@ -66,8 +66,12 @@ Python 인터프리터는 가장 먼저 실행되는 파일의 모듈 이름을 
 """
 # 메인 모듈 일 경우
 if __name__ == "__main__":
-    # CExample_03.Start(sys.argv)
-    CExample_04.Start(sys.argv)
+    """
+    sys.argv 변수는 Python 프로그램이 실행 될 때 입력 된 데이터를 가져올 수 있는 역할을 수행한다. (즉, 해당 변수를 활용하면 사용자의 입력에
+    따라 다양한 결과를 만들어내는 프로그램을 제작하는 것이 가능하다.)
+    """
+    CExample_03.Start(sys.argv)
+    # CExample_04.Start(sys.argv)
     # CExample_05.Start(sys.argv)
     # CExample_06.Start(sys.argv)
     # CExample_07.Start(sys.argv)
