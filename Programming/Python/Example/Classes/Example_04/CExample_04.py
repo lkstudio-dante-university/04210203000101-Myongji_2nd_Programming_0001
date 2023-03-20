@@ -45,9 +45,6 @@ class CExample_04:
 		print(f"{nLhs} or {nRhs} = {nLhs or nRhs}")
 		print(f"not {nLhs} = {not nLhs}")
 
-		print("\n=====> 조건 연산자 <=====")
-		print(f"{nLhs} if {nLhs} > {nRhs} else {nRhs} = {nLhs if nLhs > nRhs else nRhs}")
-
 		print("\n=====> 비트 연산자 <=====")
 		print(f"{nLhs:08b} & {nRhs:08b} = {nLhs & nRhs:08b}")
 		print(f"{nLhs:08b} | {nRhs:08b} = {nLhs | nRhs:08b}")
