@@ -6,31 +6,11 @@ import sys
 
 from Classes.Example_03.CExample_03 import *
 from Classes.Example_04.CExample_04 import *
-from Classes.Example_05.CExample_05 import *
-from Classes.Example_06.CExample_06 import *
-from Classes.Example_07.CExample_07 import *
-from Classes.Example_09.CExample_09 import *
-from Classes.Example_10.CExample_10 import *
-from Classes.Example_11.CExample_11 import *
-from Classes.Example_12.CExample_12 import *
-from Classes.Example_13.CExample_13 import *
-from Classes.Example_14.CExample_14 import *
-from Classes.Example_15.CExample_15 import *
 
 """
 Python 프로젝트 주제
 - Example_03 (Python 기초)
 - Example_04 (연산자, 제어문)
-- Example_05
-- Example_06
-- Example_07
-- Example_09
-- Example_10
-- Example_11
-- Example_12
-- Example_13
-- Example_14
-- Example_15
 """
 
 """
@@ -72,14 +52,4 @@ if __name__ == "__main__":
     """
     CExample_03.Start(sys.argv)
     # CExample_04.Start(sys.argv)
-    # CExample_05.Start(sys.argv)
-    # CExample_06.Start(sys.argv)
-    # CExample_07.Start(sys.argv)
-    # CExample_09.Start(sys.argv)
-    # CExample_10.Start(sys.argv)
-    # CExample_11.Start(sys.argv)
-    # CExample_12.Start(sys.argv)
-    # CExample_13.Start(sys.argv)
-    # CExample_14.Start(sys.argv)
-    # CExample_15.Start(sys.argv)
     
