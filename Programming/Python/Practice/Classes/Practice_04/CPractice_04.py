@@ -3,7 +3,7 @@ import sys
 
 # Practice 4
 class CPractice_04:
-    # 초기화
+	# 초기화
 	@classmethod
 	def Start(cls, args):
 		pass
