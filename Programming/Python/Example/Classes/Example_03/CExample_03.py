@@ -46,7 +46,7 @@ class CExample_03:
 			nVal = 10
 			fVal = 3.14
 
-			f"정수 : {nVal}, 실수 : {fVal}"		=>		정수 : 10, 실수 : 3.14
+			f"정수 : {nVal}, 실수 : {fVal}"		<= 정수 : 10, 실수 : 3.14
 			"""
 			# + 일 경우
 			if oTokenList[1] == "+":
