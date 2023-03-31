@@ -6,13 +6,12 @@ import sys
 
 from Classes.Example_03.CExample_03 import *
 from Classes.Example_04.CExample_04 import *
-from Classes.Example_05.CExample_05 import *
 
 """
 Python 프로젝트 주제
 - Example_03 (Python 기초)
-- Example_04 (연산자, 제어문)
-- Example_05 (클래스, 메서드)
+- Example_04 (연산자 및 제어문)
+- Example_05 (메서드 및 클래스)
 """
 
 """
@@ -53,6 +52,5 @@ if __name__ == "__main__":
 	따라 다양한 결과를 만들어내는 프로그램을 제작하는 것이 가능하다.)
 	"""
 	# CExample_03.Start(sys.argv)
-	# CExample_04.Start(sys.argv)
-	CExample_05.Start(sys.argv)
+	CExample_04.Start(sys.argv)
 	
