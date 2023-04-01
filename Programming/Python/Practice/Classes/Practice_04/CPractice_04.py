@@ -13,6 +13,8 @@ class CPractice_04:
 		nTryTimes = 0
 		print("정답 : {0}\n".format(oAnswer))
 
+		print(random.sample(range(1, 10), 4))
+
 		while True:
 			oTokenList = input("숫자 (4 개) 입력 : ").split()
 			nTryTimes += 1
@@ -23,10 +25,9 @@ class CPractice_04:
 			for i in range(0, len(oAnswer)):
 				oDigit = str(oAnswer[i])
 
-				# 숫자가 존재 할 경우
-				if oDigit in oTokenList:
-					nNumBalls += 1 if i != oTokenList.index(oDigit) else 0
-					nNumStrikes += 1 if i == oTokenList.index(oDigit) else 0
+				nNumBalls += 1 if oDigit in oTokenList and i != oTokenList.index(oDigit) else 0
+				nNumStrikes += 1 if oDigit in oTokenList and i == oTokenList.index(oDigit) else 0
+					
 
 			print("결과 : {0} Strike, {1} Ball\n".format(nNumStrikes, nNumBalls))
 
