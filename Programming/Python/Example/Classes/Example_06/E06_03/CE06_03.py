@@ -80,7 +80,7 @@ class CE06MemberManager:
 			따라서, 해당 키워드는 프로그램을 제작하는 도중에 예상하지 못한 경우를 처리하는데 활용되며 발생 된 예외는 try ~ except
 			키워드를 통해 처리하는 것이 가능하다.
 			"""
-			raise Exception("CE06MemberManager.GetInst 메서드를 사용해서 객체를 생성해야합니다.")
+			raise Exception("CE06MemberManager.GetInst 메서드를 사용해주세요.")
 		
 		CE06MemberManager.m_oInst = self
 		
@@ -88,7 +88,7 @@ class CE06MemberManager:
 	def AddMember(self, a_oMember:CE06Member):
 		oMember = self.SearchMember(a_oMember.m_oName)
 
-		# 회원 정보가 존재하지 않을 경우
+		# 회원이 없을 경우
 		if oMember == None:
 			self.m_oMemberList.append(oMember)
 			return a_oMember
@@ -99,7 +99,7 @@ class CE06MemberManager:
 	def RemoveMember(self, a_oName:str):
 		oMember = self.SearchMember(a_oName)
 
-		# 회원 정보가 존재 할 경우
+		# 회원이 존재 할 경우
 		if oMember != None:
 			self.m_oMemberList.remove(oMember)
 			return oMember
