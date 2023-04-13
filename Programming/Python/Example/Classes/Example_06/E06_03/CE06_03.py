@@ -50,6 +50,14 @@ Case 2. 회원이 없을 경우
 메뉴 선택 : 5
 프로그램을 종료합니다.
 """
+# Example 6 - 3
+class CE06_03:
+    # 실행한다
+	@classmethod
+	def Run(cls):
+		pass
+
+
 # 회원
 class CE06Member:
 	# 생성자
@@ -132,13 +140,8 @@ class CE06MemberManager:
 	@classmethod
 	def GetInst(cls):
 		# 객체 생성이 가능 할 경우
-		if CE06MemberManager.m_oInst == None:
-			CE06MemberManager.m_oInst = CE06MemberManager()
+		if cls.m_oInst == None:
+			cls.m_oInst = CE06MemberManager()
 
-		return CE06MemberManager.m_oInst
-
-# Example 6 - 3
-class CE06_03:
-    # 실행한다
-	def Run(self):
-		pass
+		return cls.m_oInst
+	

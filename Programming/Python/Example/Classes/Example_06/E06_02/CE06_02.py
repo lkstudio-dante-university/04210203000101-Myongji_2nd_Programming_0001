@@ -2,6 +2,68 @@ import os
 import sys
 import random
 
+# Example 6 - 2
+class CE06_02:
+	MENU_NONE = -1
+	MENU_ADD_CIRCLE = 0
+	MENU_ADD_TRIANGLE = 1
+	MENU_ADD_RECTANGLE = 2
+	MENU_DRAW_ALL_SHAPES = 3
+	MENU_EXIT = 4
+
+	# 실행한다
+	@classmethod
+	def Run(cls):
+		nMenu = cls.MENU_NONE
+		oCanvas = CE06Canvas()
+
+		while nMenu != cls.MENU_EXIT:
+			cls.PrintMenu()
+			nMenu = int(input("\n메뉴 선택 : ")) - 1
+
+			# 모든 도형 그리기 일 경우
+			if nMenu == cls.MENU_DRAW_ALL_SHAPES:
+				oCanvas.DrawAllShapes()
+
+			# 도형 추가 일 경우
+			elif nMenu >= cls.MENU_ADD_CIRCLE and nMenu <= cls.MENU_ADD_RECTANGLE:
+				oCanvas.AddShape(cls.CreateShape(nMenu))
+
+			print()
+
+	# 메뉴를 출력한다
+	@classmethod
+	def PrintMenu(cls):
+		print("=====> 메뉴 <=====")
+		print("1. 원 추가")
+		print("2. 삼각형 추가")
+		print("3. 사각형 추가")
+		print("4. 모든 도형 그리기")
+		print("5. 종료")
+
+	"""
+	특정 객체를 생성하는 메서드를 팩토리 메서드라고 하며 해당 메서드를 활용하면 객체를 생성하는 과정을 단일화 시키는 것이 가능하다.
+	(즉, 해당 방법은 디자인 패턴 중에 팩토리 패턴 범위에 속하는 설계 방법이다.)
+	"""
+	# 도형을 생성한다
+	@classmethod
+	def CreateShape(cls, a_nMenu:int):
+		nColor = random.randint(CE06Shape.COLOR_RED, CE06Shape.COLOR_BLUE)
+
+		# 원 일 경우
+		if a_nMenu == cls.MENU_ADD_CIRCLE:
+			return CE06Circle(nColor)
+		
+		# 삼각형 일 경우
+		elif a_nMenu == cls.MENU_ADD_TRIANGLE:
+			return CE06Triangle(nColor)
+		
+		# 사각형 일 경우
+		elif a_nMenu == cls.MENU_ADD_RECTANGLE:
+			return CE06Rectangle(nColor)
+		
+		return None
+	
 # 도형
 class CE06Shape:
 	"""
@@ -88,67 +150,4 @@ class CE06Canvas:
 	def DrawAllShapes(self):
 		for oShape in self.m_oShapeList:
 			oShape.Draw()
-
-
-# Example 6 - 2
-class CE06_02:
-	MENU_NONE = -1
-	MENU_ADD_CIRCLE = 0
-	MENU_ADD_TRIANGLE = 1
-	MENU_ADD_RECTANGLE = 2
-	MENU_DRAW_ALL_SHAPES = 3
-	MENU_EXIT = 4
-
-	# 초기화
-	def __init__(self):
-		self.m_oCanvas = CE06Canvas()
-
-	# 실행한다
-	def Run(self):
-		nMenu = CE06_02.MENU_NONE
-
-		while nMenu != CE06_02.MENU_EXIT:
-			self.PrintMenu()
-			nMenu = int(input("\n메뉴 선택 : ")) - 1
-
-			# 모든 도형 그리기 일 경우
-			if nMenu == CE06_02.MENU_DRAW_ALL_SHAPES:
-				self.m_oCanvas.DrawAllShapes()
-
-			# 도형 추가 일 경우
-			elif nMenu >= CE06_02.MENU_ADD_CIRCLE and nMenu <= CE06_02.MENU_ADD_RECTANGLE:
-				self.m_oCanvas.AddShape(self.CreateShape(nMenu))
-
-			print()
-
-	# 메뉴를 출력한다
-	def PrintMenu(self):
-		print("=====> 메뉴 <=====")
-		print("1. 원 추가")
-		print("2. 삼각형 추가")
-		print("3. 사각형 추가")
-		print("4. 모든 도형 그리기")
-		print("5. 종료")
-
-	"""
-	특정 객체를 생성하는 메서드를 팩토리 메서드라고 하며 해당 메서드를 활용하면 객체를 생성하는 과정을 단일화 시키는 것이 가능하다.
-	(즉, 해당 방법은 디자인 패턴 중에 팩토리 패턴 범위에 속하는 설계 방법이다.)
-	"""
-	# 도형을 생성한다
-	def CreateShape(self, a_nMenu:int):
-		nColor = random.randint(CE06Shape.COLOR_RED, CE06Shape.COLOR_BLUE)
-
-		# 원 일 경우
-		if a_nMenu == CE06_02.MENU_ADD_CIRCLE:
-			return CE06Circle(nColor)
-		
-		# 삼각형 일 경우
-		elif a_nMenu == CE06_02.MENU_ADD_TRIANGLE:
-			return CE06Triangle(nColor)
-		
-		# 사각형 일 경우
-		elif a_nMenu == CE06_02.MENU_ADD_RECTANGLE:
-			return CE06Rectangle(nColor)
-		
-		return None
-	
+			

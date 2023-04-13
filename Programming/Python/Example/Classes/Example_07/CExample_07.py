@@ -8,12 +8,7 @@ class CExample_07:
     # 초기화
 	@classmethod
 	def Start(cls, args):
-		cls.E07_01(args)
-
-	# 7 - 1
-	@classmethod
-	def E07_01(cls, args):
-		pass
+		CE07_01.Run()
 
 
 # 메인 모듈 일 경우
