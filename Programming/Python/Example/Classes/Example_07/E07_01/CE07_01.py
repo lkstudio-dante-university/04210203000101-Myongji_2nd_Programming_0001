@@ -53,6 +53,23 @@ class CE07UserInfoStorage:
 			따라서, 해당 키워드를 활용하면 사용이 완료 된 스크림에 close 메서드를 호출하지 않는 실수를 최소화하는 것이 가능하다.
 			"""
 			with open("Example/Resources/Example_07/E07_01.txt", "r") as oRStream:
+				"""
+				readline 또는 readlines 메서드는 스트림에서 데이터를 가져오는 역할을 수행한다.
+
+				readline 메서드는 한 라인을 가져오는 역할을 수행하며 readlines 메서드는 모든 라인을 읽어들여서 리스트 형태로 데이터를
+				가져오는 특징이 존재한다.
+
+				따라서, 파일에 존재하는 모든 데이터를 가져오고 싶다면 readlines 메서드를 활용하는 것을 추천한다.
+
+				Ex)
+				oLineList = oRStream.readlines()
+
+				for oLine in oLineList:
+					oTokenList = oLine.split(",")
+
+				위와 같이 readlines 메서드를 사용해서 모든 라인을 읽어들인 후 for 반복문을 사용하는 것으로 파일에 존재하는 모든 라인을
+				처리하는 것이 가능하다.
+				"""
 				oTokenList = oRStream.readline().split(",")
 
 				self.m_nNumGolds = int(oTokenList[0])
