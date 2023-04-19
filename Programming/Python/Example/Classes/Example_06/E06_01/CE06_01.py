@@ -8,7 +8,7 @@ class CE06_01:
 	@classmethod
 	def Run(cls):
 		oTokenList01 = input("플레이어 스탯 입력 (체력, 공격력, 방어력) : ").split()
-		oTokenList02 = input("적 스탯 입력 (체력, 공격력, 방어력)) : ").split()
+		oTokenList02 = input("적 스탯 입력 (체력, 공격력, 방어력) : ").split()
 
 		oPlayer = CE06Unit("플레이어", int(oTokenList01[0]), int(oTokenList01[1]), int(oTokenList01[2]))
 		oEnemy = CE06Unit("적", int(oTokenList02[0]), int(oTokenList02[1]), int(oTokenList02[2]))
