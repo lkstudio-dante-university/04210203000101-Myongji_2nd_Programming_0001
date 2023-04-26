@@ -18,20 +18,20 @@ class CE06_02:
 	# 실행한다
 	@classmethod
 	def Run(cls):
-		nMenu = cls.MENU_NONE
+		nSelMenu = cls.MENU_NONE
 		oCanvas = CE06Canvas()
 
-		while nMenu != cls.MENU_EXIT:
+		while nSelMenu != cls.MENU_EXIT:
 			cls.PrintMenu()
-			nMenu = int(input("\n메뉴 선택 : ")) - 1
+			nSelMenu = int(input("\n메뉴 선택 : ")) - 1
 
 			# 모든 도형 그리기 일 경우
-			if nMenu == cls.MENU_DRAW_ALL_SHAPES:
+			if nSelMenu == cls.MENU_DRAW_ALL_SHAPES:
 				oCanvas.DrawAllShapes()
 
 			# 도형 추가 일 경우
-			elif nMenu >= cls.MENU_ADD_CIRCLE and nMenu <= cls.MENU_ADD_RECTANGLE:
-				oCanvas.AddShape(cls.CreateShape(nMenu))
+			elif nSelMenu >= cls.MENU_ADD_CIRCLE and nSelMenu <= cls.MENU_ADD_RECTANGLE:
+				oCanvas.AddShape(cls.CreateShape(nSelMenu))
 
 			print()
 
@@ -51,19 +51,19 @@ class CE06_02:
 	"""
 	# 도형을 생성한다
 	@classmethod
-	def CreateShape(cls, a_nMenu:int):
+	def CreateShape(cls, a_nSelMenu:int):
 		nColor = random.randint(CE06Shape.COLOR_RED, CE06Shape.COLOR_BLUE)
 
 		# 원 일 경우
-		if a_nMenu == cls.MENU_ADD_CIRCLE:
+		if a_nSelMenu == cls.MENU_ADD_CIRCLE:
 			return CE06Circle(nColor)
 		
 		# 삼각형 일 경우
-		elif a_nMenu == cls.MENU_ADD_TRIANGLE:
+		elif a_nSelMenu == cls.MENU_ADD_TRIANGLE:
 			return CE06Triangle(nColor)
 		
 		# 사각형 일 경우
-		elif a_nMenu == cls.MENU_ADD_RECTANGLE:
+		elif a_nSelMenu == cls.MENU_ADD_RECTANGLE:
 			return CE06Rectangle(nColor)
 		
 		return None

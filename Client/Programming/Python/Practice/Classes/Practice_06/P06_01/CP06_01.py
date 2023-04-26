@@ -87,26 +87,26 @@ class CP06_01:
 	# 실행한다
 	@classmethod
 	def Run(cls):
-		nMenu = cls.MENU_NONE
+		nSelMenu = cls.MENU_NONE
 
-		while nMenu != cls.MENU_EXIT:
+		while nSelMenu != cls.MENU_EXIT:
 			cls.PrintMenu()
-			nMenu = int(input("\n메뉴 선택 : ")) - 1
+			nSelMenu = int(input("\n메뉴 선택 : ")) - 1
 
 			# 회원 추가 일 경우
-			if nMenu == cls.MENU_ADD_MEMBER:
+			if nSelMenu == cls.MENU_ADD_MEMBER:
 				cls.AddMember()
 
 			# 회원 삭제 일 경우
-			elif nMenu == cls.MENU_REMOVE_MEMBER:
+			elif nSelMenu == cls.MENU_REMOVE_MEMBER:
 				cls.RemoveMember()
 
 			# 회원 검색 일 경우
-			elif nMenu == cls.MENU_SEARCH_MEMBER:
+			elif nSelMenu == cls.MENU_SEARCH_MEMBER:
 				cls.SearchMember()
 
 			# 모든 회원 출력 일 경우
-			elif nMenu == cls.MENU_PRINT_ALL_MEMBERS:
+			elif nSelMenu == cls.MENU_PRINT_ALL_MEMBERS:
 				cls.PrintAllMembers()
 
 			print()
