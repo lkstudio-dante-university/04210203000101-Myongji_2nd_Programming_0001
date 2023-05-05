@@ -2,6 +2,7 @@ import os
 import sys
 import random
 
+
 # Example 4
 class CExample_04:
 	# 초기화
@@ -11,15 +12,15 @@ class CExample_04:
 		# cls.E04_02(args)
 		# cls.E04_03(args)
 		cls.E04_04(args)
-
+	
 	# 4 - 1
 	@classmethod
 	def E04_01(cls, args):
 		oTokenList = input("정수 (2 개) 입력 : ").split()
-
+		
 		nLhs = int(oTokenList[0])
 		nRhs = int(oTokenList[1])
-
+		
 		"""
 		비트 연산자란?
 		- 컴퓨터의 기본 단위는 비트이지만 프로그래밍 언어의 기본 단위는 바이트이다.
@@ -37,16 +38,16 @@ class CExample_04:
 		print(f"~{nLhs:08b} = {~nLhs:08b}")
 		print(f"{nLhs:08b} << 1 = {nLhs << 1:08b}")
 		print(f"{nRhs:08b} >> 1 = {nRhs >> 1:08b}")
-
+	
 	# 4 - 2
 	@classmethod
 	def E04_02(cls, args):
 		nAnswer = random.randint(1, 100)
 		print("정답 : {0}\n".format(nAnswer))
-
+		
 		while True:
 			nNum = int(input("숫자 입력 : "))
-
+			
 			# 정답 일 경우
 			if nNum == nAnswer:
 				print("정답입니다!")
@@ -65,15 +66,15 @@ class CExample_04:
 				"""
 				oStr = "큽니다." if nNum < nAnswer else "작습니다."
 				print("정답은 {0} 보다 {1}".format(nNum, oStr))
-
+			
 			print("")
-
+	
 	# 4 - 3
 	@classmethod
 	def E04_03(cls, args):
 		nWinCount = 0
 		nDrawCount = 0
-
+		
 		while True:
 			"""
 			random 모듈이란?
@@ -82,20 +83,20 @@ class CExample_04:
 			"""
 			nSel = int(input("바위(1), 가위(2), 보(3) 선택 : "))
 			nSelComputer = random.randint(1, 3)
-
+			
 			"""
 			format 메서드란?
 			- 문자열 자료형 데이터에 존재하는 메서드로 해당 메서드를 활용하면 서식화 된 문자열을 생성하는 것이 가능하다. (즉, f 문자열 포맷팅과
 			동일한 역할을 수행한다.)
 			"""
 			print("컴퓨터 선택 결과 : {0}\n".format(nSelComputer))
-
+			
 			oResultTable = [
-				[ 0, 1, -1 ],
-				[ -1, 0, 1 ],
-				[ 1, -1, 0 ]
+				[0, 1, -1],
+				[-1, 0, 1],
+				[1, -1, 0]
 			]
-
+			
 			"""
 			oResultTable 는 리스트를 요소로 하는 리스트이기 때문에 리스트의 특정 데이터에 접근하기 위해서는 [ ] (인덱스 연산자) 를 2 번 
 			명시해야 한다는 것을 알 수 있다.
@@ -110,16 +111,16 @@ class CExample_04:
 			else:
 				nResult = oResultTable[nSel - 1][nSelComputer - 1]
 				oResultStr = "이겼습니다!" if nResult > 0 else "비겼습니다!"
-
+				
 				print(oResultStr)
-
+				
 				nWinCount += 1 if nResult > 0 else 0
 				nDrawCount += 1 if nResult == 0 else 0
-
+			
 			print("")
-
+		
 		print("결과 : {0} 승 {1} 무".format(nWinCount, nDrawCount))
-
+	
 	# 4 - 4
 	@classmethod
 	def E04_04(cls, args):
@@ -136,20 +137,20 @@ class CExample_04:
 		"""
 		oAnswer = oWordList[random.randint(0, len(oWordList) - 1)]
 		oInputLetters = ["_"] * len(oAnswer)
-
+		
 		print("정답 : {0}\n".format(oAnswer))
-
+		
 		while True:
 			for i in range(0, len(oInputLetters)):
-				print("{0} ".format(oInputLetters[i]), end = "")
-
+				print("{0} ".format(oInputLetters[i]), end="")
+			
 			oLetter = input("\n문자 입력 : ")
-
+			
 			for i in range(0, len(oAnswer)):
 				# 문자가 존재 할 경우
 				if str(oAnswer[i]) == oLetter:
 					oInputLetters[i] = str(oAnswer[i])
-
+			
 			"""
 			in 키워드를 활용하면 데이터가 특정 컬렉션에 포함 되어있는지 검사하는 것이 가능하다. (즉, 일반적인 고수준 언어는 특정 컬렉션에
 			존재하는 데이터를 검사하기 위해서 반복문 등을 활용하는데 Python 은 in 키워드가 존재하기 때문에 단순한 데이터의 포함 여부를 검사
@@ -160,11 +161,5 @@ class CExample_04:
 			# 단어를 모두 완성했을 경우
 			if "_" not in oInputLetters:
 				break
-
+			
 			print("")
-
-
-# 메인 모듈 일 경우
-if __name__ == "__main__":
-	CExample_04.Start(sys.argv)
-	

@@ -1,16 +1,17 @@
 import os
 import sys
 
-from E05_01.CE05_01 import *
+from Example.Classes.Example_05.E05_01.CE05_01 import *
+
 
 # Example 5
 class CExample_05:
-    # 초기화
+	# 초기화
 	@classmethod
 	def Start(cls, argv):
 		# cls.E05_01(argv)
 		cls.E05_02(argv)
-
+	
 	# 5 - 1
 	@classmethod
 	def E05_01(cls, argv):
@@ -39,40 +40,35 @@ class CExample_05:
 		"""
 		oSuperA = CE05Super()
 		oSuperB = CE05Super()
-
+		
 		"""
 		객체 하위에 존재하는 맴버에 접근하기 위해서는 . (맴버 접근 연산자) 를 사용하면 된다. (즉, 해당 연산자를 활용하면 특정 객체 하위에
 		존재하는 변수 및 메서드를 사용하는 것이 가능하다.
 		"""
 		oSuperA.m_nVal = 10
 		oSuperB.m_nVal = 20
-
+		
 		print("=====> 클래스 정보 <=====")
 		oSuperA.ShowInfo()
 		oSuperB.ShowInfo()
-
+	
 	# 5 - 2
 	@classmethod
 	def E05_02(cls, argv):
 		oSuper = CE05Super()
 		oSub = CE05Sub()
-
+		
 		oSuper.m_nVal = 10
-
+		
 		"""
 		Sub 클래스 객체는 Super 클래스를 상속했기 때문에 Sub 클래스에 있는 맴버 뿐만 아니라 Super 클래스에 존재하는 맴버도 사용 가능하다는
 		것을 알 수 있다.
 		"""
 		oSub.m_nVal = 20
 		oSub.m_oStr = "Hello, World!"
-
+		
 		print("=====> 부모 클래스 정보 <=====")
 		oSuper.ShowInfo()
-
+		
 		print("\n=====> 자식 클래스 정보 <=====")
 		oSub.ShowInfo()
-
-
-# 메인 모듈 일 경우
-if __name__ == "__main__":
-	CExample_05.Start(sys.argv)

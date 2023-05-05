@@ -2,6 +2,7 @@ import os
 import sys
 import random
 
+
 # Example 6 - 2
 class CE06_02:
 	"""
@@ -14,27 +15,27 @@ class CE06_02:
 	MENU_ADD_RECTANGLE = 2
 	MENU_DRAW_ALL_SHAPES = 3
 	MENU_EXIT = 4
-
+	
 	# 실행한다
 	@classmethod
 	def Run(cls):
 		nSelMenu = cls.MENU_NONE
 		oCanvas = CE06Canvas()
-
+		
 		while nSelMenu != cls.MENU_EXIT:
 			cls.PrintMenu()
 			nSelMenu = int(input("\n메뉴 선택 : ")) - 1
-
+			
 			# 모든 도형 그리기 일 경우
 			if nSelMenu == cls.MENU_DRAW_ALL_SHAPES:
 				oCanvas.DrawAllShapes()
-
+			
 			# 도형 추가 일 경우
 			elif nSelMenu >= cls.MENU_ADD_CIRCLE and nSelMenu <= cls.MENU_ADD_RECTANGLE:
 				oCanvas.AddShape(cls.CreateShape(nSelMenu))
-
+			
 			print()
-
+	
 	# 메뉴를 출력한다
 	@classmethod
 	def PrintMenu(cls):
@@ -44,16 +45,17 @@ class CE06_02:
 		print("3. 사각형 추가")
 		print("4. 모든 도형 그리기")
 		print("5. 종료")
-
+	
 	"""
 	특정 객체를 생성하는 메서드를 팩토리 메서드라고 하며 해당 메서드를 활용하면 객체를 생성하는 과정을 단일화 시키는 것이 가능하다.
 	(즉, 해당 방법은 디자인 패턴 중에 팩토리 패턴 범위에 속하는 설계 방법이다.)
 	"""
+	
 	# 도형을 생성한다
 	@classmethod
-	def CreateShape(cls, a_nSelMenu:int):
+	def CreateShape(cls, a_nSelMenu: int):
 		nColor = random.randint(CE06Shape.COLOR_RED, CE06Shape.COLOR_BLUE)
-
+		
 		# 원 일 경우
 		if a_nSelMenu == cls.MENU_ADD_CIRCLE:
 			return CE06Circle(nColor)
@@ -67,13 +69,14 @@ class CE06_02:
 			return CE06Rectangle(nColor)
 		
 		return None
-	
+
+
 # 도형
 class CE06Shape:
 	COLOR_RED = 0
 	COLOR_GREEN = 1
 	COLOR_BLUE = 2
-
+	
 	"""
 	Python 은 변수 선언 시 자료형을 명시하는 것이 가능하다.
 	따라서, 특정 메서드의 매개 변수에 자료형을 명시함으로서 에디터가 지원하는 인텔리센스 기능에 도움을 받는 것이 가능하다.
@@ -81,13 +84,14 @@ class CE06Shape:
 	즉, 자료형이 명시되지 않은 매개 변수는 어떤 데이터가 전달 될 지 알 수 없기 때문에 에디터가 지원하는 인텔리센스 기능이 동작하지 않는다는
 	것을 알 수 있다.
 	"""
-    # 초기화
-	def __init__(self, a_nColor:int):
+	
+	# 초기화
+	def __init__(self, a_nColor: int):
 		self.m_nColor = a_nColor
-
+	
 	# 색상 문자열을 반환한다
 	def GetColorStr(self):
-		oColorStrs = [ "빨간색", "녹색", "파란색" ]
+		oColorStrs = ["빨간색", "녹색", "파란색"]
 		return oColorStrs[self.m_nColor]
 	
 	"""
@@ -98,6 +102,7 @@ class CE06Shape:
 	- 일반적인 메서드와 달리 메서드의 구현부가 존재하지 않는 메서드를 의미한다. (즉, 미완성 된 메서드를 의미한다.)
 	따라서, 특정 클래스에 순수 가상 메서드가 하나라도 존재 할 경우 해당 메서드는 객체화 시킬 수 없는 추상 클래스가 되는 특징이 존재한다.
 	"""
+	
 	# 도형을 그린다
 	def Draw(self):
 		pass
@@ -106,9 +111,9 @@ class CE06Shape:
 # 원
 class CE06Circle(CE06Shape):
 	# 초기화
-	def __init__(self, a_nColor:int):
+	def __init__(self, a_nColor: int):
 		super().__init__(a_nColor)
-
+	
 	# 도형을 그린다
 	def Draw(self):
 		print("{0} 원을 그렸습니다.".format(self.GetColorStr()))
@@ -117,9 +122,9 @@ class CE06Circle(CE06Shape):
 # 삼각형
 class CE06Triangle(CE06Shape):
 	# 초기화
-	def __init__(self, a_nColor:int):
+	def __init__(self, a_nColor: int):
 		super().__init__(a_nColor)
-
+	
 	# 도형을 그린다
 	def Draw(self):
 		print("{0} 삼각형을 그렸습니다.".format(self.GetColorStr()))
@@ -128,9 +133,9 @@ class CE06Triangle(CE06Shape):
 # 사각형
 class CE06Rectangle(CE06Shape):
 	# 초기화
-	def __init__(self, a_nColor:int):
+	def __init__(self, a_nColor: int):
 		super().__init__(a_nColor)
-
+	
 	# 도형을 그린다
 	def Draw(self):
 		print("{0} 사각형을 그렸습니다.".format(self.GetColorStr()))
@@ -141,13 +146,12 @@ class CE06Canvas:
 	# 초기화
 	def __init__(self):
 		self.m_oShapeList = list()
-
+	
 	# 도형을 추가한다
-	def AddShape(self, a_oShape:CE06Shape):
+	def AddShape(self, a_oShape: CE06Shape):
 		self.m_oShapeList.append(a_oShape)
-
+	
 	# 모든 도형을 그린다
 	def DrawAllShapes(self):
 		for oShape in self.m_oShapeList:
 			oShape.Draw()
-			

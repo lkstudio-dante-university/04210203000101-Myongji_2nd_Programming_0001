@@ -1,30 +1,31 @@
 import os
 import sys
 
+
 # Example 7 - 1
 class CE07_01:
-    # 실행한다
+	# 실행한다
 	@classmethod
 	def Run(cls):
 		CE07UserInfoStorage.GetInst().m_nNumGolds = 10
 		CE07UserInfoStorage.GetInst().m_nNumEquipments = 20
-
+		
 		CE07UserInfoStorage.GetInst().SaveUserInfo()
 		CE07UserInfoStorage.GetInst().LoadUserInfo()
-
+		
 		print("=====> 유저 정보 <=====")
 		print("{0}, {1}".format(CE07UserInfoStorage.GetInst().m_nNumGolds, CE07UserInfoStorage.GetInst().m_nNumEquipments))
-	
+
 
 # 유저 정보 저장소
 class CE07UserInfoStorage:
 	m_oInst = None
-
+	
 	# 초기화
 	def __init__(self):
 		self.m_nNumGolds = 0
 		self.m_nNumEquipments = 0
-
+	
 	# 유저 정보를 로드한다
 	def LoadUserInfo(self):
 		"""
@@ -71,10 +72,10 @@ class CE07UserInfoStorage:
 				처리하는 것이 가능하다.
 				"""
 				oTokenList = oRStream.readline().split(",")
-
+				
 				self.m_nNumGolds = int(oTokenList[0])
 				self.m_nNumEquipments = int(oTokenList[1])
-
+	
 	# 유저 정보를 저장한다
 	def SaveUserInfo(self):
 		"""
@@ -90,16 +91,15 @@ class CE07UserInfoStorage:
 		# 디렉토리가 없을 경우
 		if not os.path.isdir("Example/Resources/Example_07"):
 			os.makedirs("Example/Resources/Example_07")
-
+		
 		with open("Example/Resources/Example_07/E07_01.txt", "w") as oWStream:
 			oWStream.write("{0},{1}".format(self.m_nNumGolds, self.m_nNumEquipments))
-
+	
 	# 인스턴스를 반환한다
 	@classmethod
 	def GetInst(cls):
 		# 인스턴스가 없을 경우
 		if cls.m_oInst == None:
 			cls.m_oInst = CE07UserInfoStorage()
-			
+		
 		return cls.m_oInst
-	

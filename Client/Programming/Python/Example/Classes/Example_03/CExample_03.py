@@ -1,8 +1,6 @@
-"""
-import 키워드는 특정 Python 모듈을 포함 시키는 역할을 수행한다. (즉, 해당 키워드를 활용하면 3rd Party 라이브러리 등을 사용하는 것이 가능하다.)
-"""
 import os
 import sys
+
 
 # Example 3
 class CExample_03:
@@ -21,7 +19,7 @@ class CExample_03:
 		반환하기 때문에 해당 결과를 활용하면 분할 된 데이터를 손쉽게 제어하는 것이 가능하다.
 		"""
 		oTokenList = input("수식 입력 : ").split()
-
+		
 		"""
 		len 메서드란?
 		- 특정 컬렉션 데이터에 저장 된 요소의 개수를 반환하는 역할을 수행한다. (즉, 해당 메서드를 활용하면 문자열 뿐만 아니라 다양한 컬렉션의
@@ -30,7 +28,7 @@ class CExample_03:
 		if len(oTokenList) >= 3:
 			nLhs = int(oTokenList[0])
 			nRhs = int(oTokenList[2])
-
+			
 			"""
 			print 메서드란?
 			- 입력으로 전달 된 데이터를 콘솔 창에 출력하는 역할을 수행한다.
@@ -39,7 +37,7 @@ class CExample_03:
 			몰라도 손쉽게 원하는 데이터를 출력하는 것이 가능하다.
 			"""
 			print("\n=====> 수식 입력 결과 <=====")
-
+			
 			"""
 			문자열 포맷팅이란?
 			- 문자열을 비롯한 여러 데이터를 활용해서 문자열을 생성 할 수 있는 기능을 의미한다. (즉, 문자열 포맷팅을 활용하면 다양한 데이터를
@@ -54,33 +52,15 @@ class CExample_03:
 			# + 일 경우
 			if oTokenList[1] == "+":
 				print(f"{nLhs} + {nRhs} = {nLhs + nRhs}")
-
+			
 			# - 일 경우
 			elif oTokenList[1] == "-":
 				print(f"{nLhs} - {nRhs} = {nLhs - nRhs}")
-
+			
 			# * 일 경우
 			elif oTokenList[1] == "*":
 				print(f"{nLhs} * {nRhs} = {nLhs * nRhs}")
-
+			
 			# / 일 경우
 			elif oTokenList[1] == "/":
 				print(f"{nLhs} / {nRhs} = {nLhs / nRhs}")
-		
-
-"""
-메인 모듈이란?
-- Python 은 프로그램이 실행 될 때 가장 처음 실행 할 진입 함수 (메서드) 가 따로 존재하지 않는다.
-따라서, 어떤 파일이 먼저 실행되느냐에 따라 결과가 달라지기 때문에 사용자 (프로그래머) 가 임의적으로 진입 함수를 만들어 줄 필요가 있다.
-
-Python 인터프리터는 가장 먼저 실행되는 파일의 모듈 이름을 __main__ 으로 지정하기 때문에 해당 특징을 활용하면 진입 함수 역할을 하는
-파일을 제작하는 것이 가능하다.
-"""
-# 메인 모듈 일 경우
-if __name__ == "__main__":
-	"""
-	sys.argv 변수는 Python 프로그램이 실행 될 때 입력 된 데이터를 가져올 수 있는 역할을 수행한다. (즉, 해당 변수를 활용하면 사용자의 입력에
-	따라 다양한 결과를 만들어내는 프로그램을 제작하는 것이 가능하다.)
-	"""
-	CExample_03.Start(sys.argv)
-	

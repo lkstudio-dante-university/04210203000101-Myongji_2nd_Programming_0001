@@ -1,7 +1,7 @@
 import os
 import sys
 
-from E07_01.CE07_01 import *
+from Example.Classes.Example_07.E07_01.CE07_01 import *
 
 """
 파일 시스템이란?
@@ -15,15 +15,11 @@ from E07_01.CE07_01 import *
 파일을 활용하면 반영구적으로 데이터를 저장 및 필요에 따라 읽어들이는 것이 가능하다. (즉, 이전 프로그램이 구동 중에 사용하던 데이터를 그대로
 재사용 할 수 있다는 것을 알 수 있다.)
 """
+
+
 # Example 7
 class CExample_07:
-    # 초기화
+	# 초기화
 	@classmethod
 	def Start(cls, args):
 		CE07_01.Run()
-
-
-# 메인 모듈 일 경우
-if __name__ == "__main__":
-	CExample_07.Start(sys.argv)
-	
