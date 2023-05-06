@@ -14,8 +14,6 @@ class CPractice_04:
 		nTryTimes = 0
 		print("정답 : {0}\n".format(oAnswer))
 		
-		print(random.sample(range(1, 10), 4))
-		
 		while True:
 			oTokenList = input("숫자 (4 개) 입력 : ").split()
 			nTryTimes += 1

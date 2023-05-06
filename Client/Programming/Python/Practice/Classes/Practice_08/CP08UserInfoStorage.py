@@ -1,7 +1,7 @@
 import os
 import sys
 
-from Practice.Classes.Practice_08.P08_01.CP08EquipInfo import *
+from Practice.Classes.Practice_08.CP08EquipInfo import *
 
 
 # 유저 정보
@@ -48,7 +48,7 @@ class CP08UserInfo:
 # 유저 정보 저장소
 class CP08UserInfoStorage:
 	m_oInst = None
-	FILE_PATH_USER_INFOS = "Practice/Resources/Practice_08/P08_01UserInfos.txt"
+	FILE_PATH_USER_INFOS = "Resources/Practice_08/P08UserInfos.txt"
 	
 	# 초기화
 	def __init__(self):
@@ -92,7 +92,7 @@ class CP08UserInfoStorage:
 	@classmethod
 	def GetInst(cls):
 		# 인스턴스가 없을 경우
-		if (cls.m_oInst == None):
+		if cls.m_oInst == None:
 			cls.m_oInst = CP08UserInfoStorage()
 		
 		return cls.m_oInst

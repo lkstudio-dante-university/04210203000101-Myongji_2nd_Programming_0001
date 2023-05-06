@@ -1,7 +1,7 @@
 import os
 import sys
 
-from Practice.Classes.Practice_08.P08_01.CP08EquipInfo import *
+from Practice.Classes.Practice_08.CP08EquipInfo import *
 
 
 # 유틸리티
