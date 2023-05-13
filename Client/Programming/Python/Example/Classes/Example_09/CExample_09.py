@@ -16,6 +16,13 @@ class CExample_09(QMainWindow):
 	
 	# 초기화
 	def __init__example_09__(self):
+		"""
+		show 메서드는 QMainWindow 를 화면 상에 출력하는 역할을 수행한다. (즉, 해당 메서드를 호출하지 않으면 윈도우가 화면 상에 보이지
+		않는다는 것을 알 수 있다.)
+		
+		setWindowTitle 메서드는 윈도우 제목을 변경하는 역할을 수행한다. (즉, 해당 메서드를 활용하면 자유롭게 윈도우 이름을 프로그램
+		목적에 맞게 변경하는 것이 가능하다.)
+		"""
 		self.show()
 		self.setWindowTitle("Example 9")
 		
@@ -47,9 +54,17 @@ class CExample_09(QMainWindow):
 		oAction = QAction("About", self)
 		oAction.triggered.connect(self.OnClickAboutMenu)
 		
+		"""
+		setNativeMenuBar 메서드는 운영체제가 기본적으로 제공하는 메뉴 바를 비활성 시키는 역할을 수행한다. (즉, 기본적인 메뉴 바를
+		비활성 시킬 수 있다는 것을 알 수 있다.)
+		"""
 		oMenuBar = self.menuBar()
 		oMenuBar.setNativeMenuBar(False)
 		
+		"""
+		addMenu 메서드는 새로운 메뉴를 추가 시키는 역할을 수행한다. (즉, 해당 메서드를 활용하면 프로그램 목적에 맞게 다양한 메뉴를
+		손쉽게 추가하는 것이 가능하다.)
+		"""
 		oFileMenu = oMenuBar.addMenu("File")
 		oFileMenu.addAction(oAction)
 	
@@ -58,6 +73,9 @@ class CExample_09(QMainWindow):
 		"""
 		QMessageBox 클래스는 알림 창을 제어하는 역할을 수행한다. (즉, 해당 클래스를 활용하면 특정 동작의 진행 여부를 사용자로부터 입력받거나
 		반대로 사용자에게 특정 연산 결과를 알리는 것이 가능하다.)
+		
+		해당 클래스는 aboutQt 이외에도 다양한 형태의 알림 창을 지원하기 때문에 프로그램의 목적에 맞는 적절한 알림 창을 생성 및 출력하는
+		것이 가능하다.
 		"""
 		QMessageBox.aboutQt(self, "알림")
 	
