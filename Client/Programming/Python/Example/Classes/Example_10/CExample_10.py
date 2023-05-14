@@ -7,11 +7,6 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-"""
-uic.loadUiType 메서드는 Designer 프로그램으로 작성 된 UI 파일을 불러오는 역할을 수행한다. 따라서, 해당 메서드를 이용하면
-Designer 프로그램을 통해 미리 배치 된 UI 위젯을 손쉽게 설정하는 것이 가능하다.
-"""
-
 
 # Example 10
 class CExample_10(QMainWindow, uic.loadUiType("Resources/Example_10/E10MainWindow.ui")[0]):
@@ -62,15 +57,16 @@ class CExample_10(QMainWindow, uic.loadUiType("Resources/Example_10/E10MainWindo
 	# 상태를 갱신한다
 	def OnUpdate(self):
 		"""
-		update 내부적으로 paintEvent 를 발생시키는 역할을 수행한다. (즉, 해당 메서드를 호출함으로서 실시간으로 QMainWindow 상에
-		특정 그래픽을 그리는 것이 가능하다는 것을 알수 있다.)
+		update 메서드는 내부적으로 paintEvent 를 발생시키는 역할을 수행한다. (즉, 해당 메서드를 호출함으로서 실시간으로 QMainWindow
+		상에 특정 그래픽을 그리는 것이 가능하다는 것을 알수 있다.)
 		"""
 		self.update()
-		
+	
 	"""
 	paintEvent 메서드는 PyQt 위젯 상태가 변경 되었을 경우 호출된다. (즉, 해당 메서드는 변경 된 위젯 상태에 맞게 특정 위젯을 다시
 	화면 상에 그리는 역할을 수행한다는 것을 알 수 있다.)
 	"""
+	
 	# 그리기 이벤트를 수신했을 경우
 	def paintEvent(self, a_oEvent: QPaintEvent):
 		"""
@@ -99,6 +95,7 @@ class CExample_10(QMainWindow, uic.loadUiType("Resources/Example_10/E10MainWindo
 	이벤트를 무시하는 것이 가능하다. (즉, QCloseEvent 의 accept 메서드를 호출하면 닫힘 이벤트를 수락하겠다는 것을 의미하며 이는
 	곧 윈도우 창이 화면 상에서 사라진다는 것을 알 수 있다.)
 	"""
+	
 	# 닫기 이벤트를 수신했을 경우
 	def closeEvent(self, a_oEvent: QCloseEvent):
 		nResult = QMessageBox.question(self, "알림", "앱을 종료하시겠습니까?", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
@@ -107,6 +104,7 @@ class CExample_10(QMainWindow, uic.loadUiType("Resources/Example_10/E10MainWindo
 	"""
 	keyPressEvent 및 keyReleaseEvent 메서드는 키보드의 특정 키가 눌렸을 경우 호출되는 메서드이다.
 	"""
+	
 	# 키 눌림 이벤트를 수신했을 경우
 	def keyPressEvent(self, a_oEvent: QKeyEvent):
 		# Esc 키를 눌렀을 경우
@@ -116,10 +114,11 @@ class CExample_10(QMainWindow, uic.loadUiType("Resources/Example_10/E10MainWindo
 			된다는 것을 알 수 있다.)
 			"""
 			self.close()
-			
+	
 	"""
 	mouseMoveEvent, mousePressEvent 및 mouseReleaseEvent 메서드는 마우스가 이동 되었거나 버튼이 눌렸을 경우 호출되는 메서드이다.
 	"""
+	
 	# 마우스 이동 이벤트를 수신했을 경우
 	def mouseMoveEvent(self, a_oEvent: QMouseEvent):
 		self.m_oDestPos = QPoint(a_oEvent.x(), a_oEvent.y())
