@@ -53,7 +53,7 @@ class CPractice_10(QMainWindow, uic.loadUiType("Resources/Practice_10/P10MainWin
 		self.m_oPenBtn.setGeometry(10, 10, 150, 35)
 		self.m_oPenBtn.clicked.connect(lambda: self.OnClickToolBtn(CPractice_10.EP10Tool.PEN))
 		
-		self.m_oLineBtn = QPushButton("직석", self.centralWidget())
+		self.m_oLineBtn = QPushButton("직선", self.centralWidget())
 		self.m_oLineBtn.setGeometry(170, 10, 150, 35)
 		self.m_oLineBtn.clicked.connect(lambda: self.OnClickToolBtn(CPractice_10.EP10Tool.LINE))
 		

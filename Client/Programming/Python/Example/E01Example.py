@@ -5,6 +5,8 @@ import 키워드는 특정 Python 모듈을 포함 시키는 역할을 수행한
 import os
 import sys
 
+sys.path.append(os.getcwd().replace("\\", "/"))
+
 from Example.Classes.Example_03.CExample_03 import *
 from Example.Classes.Example_04.CExample_04 import *
 from Example.Classes.Example_05.CExample_05 import *
@@ -81,8 +83,8 @@ if __name__ == "__main__":
 	# CExample_06.Start(sys.argv)
 	# CExample_07.Start(sys.argv)
 	# CExample_09.Start(sys.argv)
-	# CExample_10.Start(sys.argv)
-	CExample_11.Start(sys.argv)
+	CExample_10.Start(sys.argv)
+	# CExample_11.Start(sys.argv)
 	# CExample_12.Start(sys.argv)
 	# CExample_13.Start(sys.argv)
 	# CExample_14.Start(sys.argv)
