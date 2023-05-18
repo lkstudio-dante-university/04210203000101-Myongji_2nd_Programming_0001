@@ -22,6 +22,11 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 	
 	# 초기화
 	def __init__example_11__(self):
+		"""
+		setupUi 메서드는 Designer 프로그램을 통해 배치 된 UI 위젯을 실제 QMainWindow 상에 설정하는 역할을 수행한다. (즉,
+		uic.loadUiType 메서드는 Designer 로 작업 된 파일을 불러오는 역할을 수행 할 뿐 실제 해당 파일에 존재하는 UI 위젯을 설정해주는
+		메서드는 self.setupUi 메서드라는 것을 알 수 있다.)
+		"""
 		self.show()
 		self.setupUi(self)
 		self.setWindowTitle("Example_11")

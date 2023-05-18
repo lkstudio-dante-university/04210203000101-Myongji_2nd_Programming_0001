@@ -18,29 +18,12 @@ from Example.Classes.Example_11.CExample_11 import *
 from Example.Classes.Example_12.CExample_12 import *
 from Example.Classes.Example_13.CExample_13 import *
 from Example.Classes.Example_14.CExample_14 import *
-from Example.Classes.Example_15.CExample_15 import *
 
 """
-Python 프로젝트
-- Example_03 (Python 기초)
-- Example_04 (연산자 및 제어문)
-- Example_05 (메서드 및 클래스 - 1)
-- Example_06 (메서드 및 클래스 - 2)
-- Example_07 (파일 시스템)
-- Example_09 (GUI 프로그래밍 - 1)
-- Example_10 (GUI 프로그래밍 - 2)
-- Example_11 (GUI 프로그래밍 - 3)
-- Example_12 (GUI 프로그래밍 - 4)
-- Example_13 (GUI 프로그래밍 - 5)
-- Example_14 (GUI 프로그래밍 - 6)
-- Example_15 (GUI 프로그래밍 - 7)
-
 PyQt 학습 사이트
 - 초보자를 위한 Python GUI 프로그래밍 (https://wikidocs.net/book/2944)
 - PyQt5 Tutorial - 파이썬으로 만드는 나만의 GUI 프로그램 (https://wikidocs.net/book/2165)
-"""
 
-"""
 주석이란?
 - 컴파일러에 의해서 해석되지 않는 구문을 의미한다. (즉, 주석을 활용하면 명령문의 특정 부분을 비활성화하는 것이 가능하다.)
 
@@ -84,8 +67,7 @@ if __name__ == "__main__":
 	# CExample_07.Start(sys.argv)
 	# CExample_09.Start(sys.argv)
 	CExample_10.Start(sys.argv)
-	# CExample_11.Start(sys.argv)
-	# CExample_12.Start(sys.argv)
-	# CExample_13.Start(sys.argv)
-	# CExample_14.Start(sys.argv)
-	# CExample_15.Start(sys.argv)
+# CExample_11.Start(sys.argv)
+# CExample_12.Start(sys.argv)
+# CExample_13.Start(sys.argv)
+# CExample_14.Start(sys.argv)
