@@ -21,6 +21,10 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 		self.m_oCurShape = None
 		self.m_oShapeList = []
 		
+		self.m_nSelTool = CE11Tool.PEN
+		self.m_nSelPenColor = CE11Color.DEF
+		self.m_nSelBrushColor = CE11Color.DEF
+		
 		super().__init__()
 		self.__init__example_11__()
 	
@@ -54,11 +58,22 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 		self.actionAbout.triggered.connect(self.OnClickAboutMenu)
 		
 		# 버튼을 설정한다
-		self.btnPen.clicked.connect(self.OnClickPenBtn)
-	
-	# 펜 버튼을 눌렀을 경우
-	def OnClickPenBtn(self):
-		print("AAAAAAAA")
+		self.btnPen.clicked.connect(lambda: self.OnClickToolBtn(CE11Tool.PEN))
+		self.btnLine.clicked.connect(lambda: self.OnClickToolBtn(CE11Tool.LINE))
+		self.btnEllipse.clicked.connect(lambda: self.OnClickToolBtn(CE11Tool.ELLIPSE))
+		self.btnRectangle.clicked.connect(lambda: self.OnClickToolBtn(CE11Tool.RECTANGLE))
+		
+		self.btnPenDefColor.clicked.connect(lambda: self.OnClickPenColorBtn(CE11Color.DEF))
+		self.btnPenRedColor.clicked.connect(lambda: self.OnClickPenColorBtn(CE11Color.RED))
+		self.btnPenGreenColor.clicked.connect(lambda: self.OnClickPenColorBtn(CE11Color.GREEN))
+		self.btnPenBlueColor.clicked.connect(lambda: self.OnClickPenColorBtn(CE11Color.BLUE))
+		
+		self.btnBrushDefColor.clicked.connect(lambda: self.OnClickBrushColorBtn(CE11Color.DEF))
+		self.btnBrushRedColor.clicked.connect(lambda: self.OnClickBrushColorBtn(CE11Color.RED))
+		self.btnBrushGreenColor.clicked.connect(lambda: self.OnClickBrushColorBtn(CE11Color.GREEN))
+		self.btnBrushBlueColor.clicked.connect(lambda: self.OnClickBrushColorBtn(CE11Color.BLUE))
+		
+		self.btnClearAllShapes.clicked.connect(self.OnClickClearAllShapesBtn)
 	
 	# 상태를 갱신한다
 	def OnUpdate(self):
@@ -94,7 +109,7 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 	
 	# 마우스 눌림 이벤트를 수신했을 경우
 	def mousePressEvent(self, a_oEvent: QMouseEvent):
-		self.m_oCurShape = CE11Pen(0, 0)
+		self.m_oCurShape = self.CreateShape()
 		self.m_oCurShape.AddPos(QPoint(a_oEvent.x(), a_oEvent.y()))
 		
 		self.m_oShapeList.append(self.m_oCurShape)
@@ -108,6 +123,36 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 	def OnClickAboutMenu(self):
 		QMessageBox.aboutQt(self, "알림")
 	
+	# 도구 버튼을 눌렀을 경우
+	def OnClickToolBtn(self, a_nTool: int):
+		self.m_nSelTool = a_nTool
+		self.m_oCurShape = self.CreateShape()
+	
+	# 펜 색상 버튼을 눌렀을 경우
+	def OnClickPenColorBtn(self, a_nColor: int):
+		self.m_nSelPenColor = a_nColor
+		self.m_oCurShape = self.CreateShape()
+	
+	# 펜 색상 버튼을 눌렀을 경우
+	def OnClickBrushColorBtn(self, a_nColor: int):
+		self.m_nSelBrushColor = a_nColor
+		self.m_oCurShape = self.CreateShape()
+	
+	# 모든 도형 지우기 버튼을 눌렀을 경우
+	def OnClickClearAllShapesBtn(self):
+		self.m_oShapeList.clear()
+	
+	# 도형을 생성한다
+	def CreateShape(self):
+		oShapeList = [
+			CE11Pen(self.m_nSelPenColor, self.m_nSelBrushColor),
+			CE11Line(self.m_nSelPenColor, self.m_nSelBrushColor),
+			CE11Ellipse(self.m_nSelPenColor, self.m_nSelBrushColor),
+			CE11Rectangle(self.m_nSelPenColor, self.m_nSelBrushColor)
+		]
+		
+		return oShapeList[self.m_nSelTool]
+	
 	# 초기화
 	@classmethod
 	def Start(cls, args):
@@ -117,10 +162,38 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 		sys.exit(oApp.exec())
 
 
+# 도구
+class CE11Tool:
+	NONE = -1
+	PEN = 0
+	LINE = 1
+	ELLIPSE = 2
+	RECTANGLE = 3
+	MAX_VAL = RECTANGLE + 1
+
+
+# 색상
+class CE11Color:
+	NONE = -1
+	DEF = 0
+	RED = 1
+	GREEN = 2
+	BLUE = 3
+	MAX_VAL = BLUE + 1
+
+
 # 도형
 class CE11Shape:
+	PEN_COLOR_LIST = [
+		QColor(0, 0, 0, 255), QColor(255, 0, 0, 255), QColor(0, 255, 0, 255), QColor(0, 0, 255, 255)
+	]
+	
+	BRUSH_COLOR_LIST = [
+		QColor(0, 0, 0, 0), QColor(255, 0, 0, 255), QColor(0, 255, 0, 255), QColor(0, 0, 255, 255)
+	]
+	
 	# 생성자
-	def __init__(self, a_nPenColor, a_nBrushColor):
+	def __init__(self, a_nPenColor: int, a_nBrushColor: int):
 		self.m_oPosList = []
 		self.m_nPenColor = a_nPenColor
 		self.m_nBrushColor = a_nBrushColor
@@ -131,7 +204,8 @@ class CE11Shape:
 	
 	# 도형을 그린다
 	def Draw(self, a_oPainter: QPainter):
-		pass
+		a_oPainter.setPen(QPen(CE11Shape.PEN_COLOR_LIST[self.m_nPenColor]))
+		a_oPainter.setBrush(QBrush(CE11Shape.BRUSH_COLOR_LIST[self.m_nBrushColor]))
 
 
 # 펜
