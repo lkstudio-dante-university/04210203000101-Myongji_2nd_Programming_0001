@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import *
 class CExample_10(QMainWindow, uic.loadUiType("Resources/Example_10/E10MainWindow.ui")[0]):
 	# 생성자
 	def __init__(self):
-		# 맴버 변수를 설정한다
+		# 멤버 변수를 설정한다
 		self.m_oSrcPos = QPoint(0, 0)
 		self.m_oDestPos = QPoint(0, 0)
 		

@@ -7,6 +7,14 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
+"""
+과제 10 - 1
+- PyQt 를 이용한 그림판 제작하기
+- 도형의 종류는 4 가지 (+ 펜, 직선, 타원, 직사각형)
+- 윈도우 창에는 도형 종류를 변경 할 수 있게 4 개의 버튼 배치 (+ 위치 및 크기는 자유롭게 설정)
+- 마우스로 윈도우 영역의 특정 위치를 누른 후 드래그 할 경우 마우스의 위치에 맞게 선택한 도형이 그려져야한다
+"""
+
 
 # Practice 10
 class CPractice_10(QMainWindow, uic.loadUiType("Resources/Practice_10/P10MainWindow.ui")[0]):
@@ -21,7 +29,7 @@ class CPractice_10(QMainWindow, uic.loadUiType("Resources/Practice_10/P10MainWin
 	
 	# 생성자
 	def __init__(self):
-		# 맴버 변수를 설정한다
+		# 멤버 변수를 설정한다
 		self.m_eSelTool = CPractice_10.EP10Tool.PEN
 		self.m_oPosList = []
 		
@@ -96,7 +104,7 @@ class CPractice_10(QMainWindow, uic.loadUiType("Resources/Practice_10/P10MainWin
 			# 사각형 일 경우
 			elif self.m_eSelTool == CPractice_10.EP10Tool.RECTANGLE:
 				oPainter.drawRect(QRect(self.m_oPosList[0], self.m_oPosList[nNumPositions - 1]))
-				
+		
 		finally:
 			oPainter.end()
 	
@@ -110,7 +118,7 @@ class CPractice_10(QMainWindow, uic.loadUiType("Resources/Practice_10/P10MainWin
 		# Esc 키를 눌렀을 경우
 		if a_oEvent.key() == Qt.Key_Escape:
 			self.close()
-			
+	
 	# 마우스 이동 이벤트를 수신했을 경우
 	def mouseMoveEvent(self, a_oEvent: QMouseEvent):
 		self.m_oPosList.append(QPoint(a_oEvent.x(), a_oEvent.y()))

@@ -51,7 +51,7 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 		
 		"""
 		Designer 프로그램에서 배치 된 각 위젯은 중복되지 않는 고유한 이름을 지니고 있으며 해당 이름을 활용하면 특정 위젯을 제어하는 것이
-		가능하다. (즉, setupUi 메서드를 통해 배치 된 위젯의 이름을 기반으로 맴버 변수가 자동으로 선언 된다는 것을 알 수 있다.)
+		가능하다. (즉, setupUi 메서드를 통해 배치 된 위젯의 이름을 기반으로 멤버 변수가 자동으로 선언 된다는 것을 알 수 있다.)
 		"""
 		# 메뉴 바를 설정한다
 		self.menuBar().setNativeMenuBar(False)
