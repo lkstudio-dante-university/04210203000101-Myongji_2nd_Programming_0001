@@ -1,5 +1,6 @@
 import os
 import sys
+import math
 
 from PyQt5 import *
 from PyQt5 import uic
@@ -7,14 +8,14 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
+from Example.Classes.Global.Manager.CTimeManager import *
+from Example.Classes.Global.Manager.CInputManager import *
+
 
 # Example 12
 class CExample_12(QMainWindow, uic.loadUiType("Resources/Example_12/E12MainWindow.ui")[0]):
 	# 생성자
 	def __init__(self):
-		# 멤버를 설정한다
-		self.m_oKeySet = set()
-		
 		super().__init__()
 		self.__init__example_12__()
 	
@@ -32,7 +33,7 @@ class CExample_12(QMainWindow, uic.loadUiType("Resources/Example_12/E12MainWindo
 		self.m_oTimer = QTimer(self)
 		self.m_oTimer.timeout.connect(self.OnUpdate)
 		
-		self.m_oTimer.start()
+		self.m_oTimer.start(1)
 		
 		# 메뉴 바를 설정한다
 		self.menuBar().setNativeMenuBar(False)
@@ -41,6 +42,14 @@ class CExample_12(QMainWindow, uic.loadUiType("Resources/Example_12/E12MainWindo
 	# 상태를 갱신한다
 	def OnUpdate(self):
 		self.update()
+		
+		# 관리자를 갱신한다
+		CTimeManager.GetInst().Update()
+		CInputManager.GetInst().Update()
+		
+		# 라벨을 갱신한다
+		self.labelDeltaTime.setText("Delta Time: {0:0.5f} sec".format(CTimeManager.GetInst().GetDeltaTime()))
+		self.labelRunningTime.setText("Running Time: {0:0.5f} sec".format(CTimeManager.GetInst().GetRunningTime()))
 	
 	# 그리기 이벤트를 수신했을 경우
 	def paintEvent(self, a_oEvent: QPaintEvent):
@@ -63,11 +72,11 @@ class CExample_12(QMainWindow, uic.loadUiType("Resources/Example_12/E12MainWindo
 		if a_oEvent.key() == Qt.Key_Escape:
 			self.close()
 		
-		self.m_oKeySet.add(a_oEvent.key())
+		CInputManager.GetInst().AddKey(a_oEvent.key())
 	
 	# 키 눌림 종료 이벤트를 수신했을 경우
 	def keyReleaseEvent(self, a_oEvent: QKeyEvent):
-		self.m_oKeySet.remove(a_oEvent.key())
+		CInputManager.GetInst().RemoveKey(a_oEvent.key())
 	
 	# 정보 메뉴를 눌렀을 경우
 	def OnClickAboutMenu(self):

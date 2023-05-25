@@ -34,7 +34,7 @@ class CPractice_12(QMainWindow, uic.loadUiType("Resources/Practice_12/P12MainWin
 		self.m_oTimer = QTimer(self)
 		self.m_oTimer.timeout.connect(self.OnUpdate)
 		
-		self.m_oTimer.start()
+		self.m_oTimer.start(1)
 		
 		# 메뉴 바를 설정한다
 		self.menuBar().setNativeMenuBar(False)

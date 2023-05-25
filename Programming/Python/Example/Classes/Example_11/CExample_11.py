@@ -7,6 +7,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
+from Example.Classes.Example_11.CE11Shape import *
+
 """
 uic.loadUiType 메서드는 Designer 프로그램으로 작성 된 UI 파일을 불러오는 역할을 수행한다. 따라서, 해당 메서드를 이용하면
 Designer 프로그램을 통해 미리 배치 된 UI 위젯을 손쉽게 설정하는 것이 가능하다.
@@ -47,7 +49,7 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 		self.m_oTimer = QTimer(self)
 		self.m_oTimer.timeout.connect(self.OnUpdate)
 		
-		self.m_oTimer.start()
+		self.m_oTimer.start(1)
 		
 		"""
 		Designer 프로그램에서 배치 된 각 위젯은 중복되지 않는 고유한 이름을 지니고 있으며 해당 이름을 활용하면 특정 위젯을 제어하는 것이
@@ -160,94 +162,3 @@ class CExample_11(QMainWindow, uic.loadUiType("Resources/Example_11/E11MainWindo
 		oExample = CExample_11()
 		
 		sys.exit(oApp.exec())
-
-
-# 도구
-class CE11Tool:
-	NONE = -1
-	PEN = 0
-	LINE = 1
-	ELLIPSE = 2
-	RECTANGLE = 3
-	MAX_VAL = RECTANGLE + 1
-
-
-# 색상
-class CE11Color:
-	NONE = -1
-	DEF = 0
-	RED = 1
-	GREEN = 2
-	BLUE = 3
-	MAX_VAL = BLUE + 1
-
-
-# 도형
-class CE11Shape:
-	PEN_COLOR_LIST = [
-		QColor(0, 0, 0, 255), QColor(255, 0, 0, 255), QColor(0, 255, 0, 255), QColor(0, 0, 255, 255)
-	]
-	
-	BRUSH_COLOR_LIST = [
-		QColor(0, 0, 0, 0), QColor(255, 0, 0, 255), QColor(0, 255, 0, 255), QColor(0, 0, 255, 255)
-	]
-	
-	# 생성자
-	def __init__(self, a_nPenColor: int, a_nBrushColor: int):
-		self.m_oPosList = []
-		self.m_nPenColor = a_nPenColor
-		self.m_nBrushColor = a_nBrushColor
-	
-	# 위치를 추가한다
-	def AddPos(self, a_oPos: QPoint):
-		self.m_oPosList.append(a_oPos)
-	
-	# 도형을 그린다
-	def Draw(self, a_oPainter: QPainter):
-		a_oPainter.setPen(QPen(CE11Shape.PEN_COLOR_LIST[self.m_nPenColor]))
-		a_oPainter.setBrush(QBrush(CE11Shape.BRUSH_COLOR_LIST[self.m_nBrushColor]))
-
-
-# 펜
-class CE11Pen(CE11Shape):
-	# 도형을 그린다
-	def Draw(self, a_oPainter: QPainter):
-		super().Draw(a_oPainter)
-		
-		# 위치 정보가 존재 할 경우
-		if len(self.m_oPosList) >= 2:
-			for i in range(0, len(self.m_oPosList) - 1):
-				a_oPainter.drawLine(self.m_oPosList[i], self.m_oPosList[i + 1])
-
-
-# 직선
-class CE11Line(CE11Shape):
-	# 도형을 그린다
-	def Draw(self, a_oPainter: QPainter):
-		super().Draw(a_oPainter)
-		
-		# 위치 정보가 존재 할 경우
-		if len(self.m_oPosList) >= 2:
-			a_oPainter.drawLine(self.m_oPosList[0], self.m_oPosList[len(self.m_oPosList) - 1])
-
-
-# 타원
-class CE11Ellipse(CE11Shape):
-	# 도형을 그린다
-	def Draw(self, a_oPainter: QPainter):
-		super().Draw(a_oPainter)
-		
-		# 위치 정보가 존재 할 경우
-		if len(self.m_oPosList) >= 2:
-			a_oPainter.drawEllipse(QRect(self.m_oPosList[0], self.m_oPosList[len(self.m_oPosList) - 1]))
-
-
-# 사각형
-class CE11Rectangle(CE11Shape):
-	# 도형을 그린다
-	def Draw(self, a_oPainter: QPainter):
-		super().Draw(a_oPainter)
-		
-		# 위치 정보가 존재 할 경우
-		if len(self.m_oPosList) >= 2:
-			a_oPainter.drawRect(QRect(self.m_oPosList[0], self.m_oPosList[len(self.m_oPosList) - 1]))

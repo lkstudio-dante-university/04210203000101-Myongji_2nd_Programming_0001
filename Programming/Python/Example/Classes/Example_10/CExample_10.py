@@ -43,7 +43,7 @@ class CExample_10(QMainWindow, uic.loadUiType("Resources/Example_10/E10MainWindo
 		self.m_oTimer = QTimer(self)
 		self.m_oTimer.timeout.connect(self.OnUpdate)
 		
-		self.m_oTimer.start()
+		self.m_oTimer.start(1)
 		
 		# 메뉴 바를 설정한다
 		self.menuBar().setNativeMenuBar(False)
