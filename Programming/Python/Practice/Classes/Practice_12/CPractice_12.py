@@ -9,6 +9,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
+from Practice.Classes.Practice_12.CP12Shape import *
+
 from Example.Classes.Global.Manager.CTimeManager import *
 from Example.Classes.Global.Manager.CInputManager import *
 
@@ -25,6 +27,9 @@ from Example.Classes.Global.Manager.CInputManager import *
 class CPractice_12(QMainWindow, uic.loadUiType("Resources/Practice_12/P12MainWindow.ui")[0]):
 	# 생성자
 	def __init__(self):
+		# 멤버 변수를 설정한다
+		self.m_oCircleList = []
+		
 		super().__init__()
 		self.__init__practice_12__()
 	
@@ -47,11 +52,60 @@ class CPractice_12(QMainWindow, uic.loadUiType("Resources/Practice_12/P12MainWin
 		# 메뉴 바를 설정한다
 		self.menuBar().setNativeMenuBar(False)
 		self.actionAbout.triggered.connect(self.OnClickAboutMenu)
+		
+		# 도형을 설정한다
+		fAngle = random.random() * 360.0
+		
+		oCircle = CP12Circle(150.0)
+		oCircle.SetPos(QPointF(self.geometry().width() / 2.0, self.geometry().height() / 2.0))
+		oCircle.SetDirection(QPointF(math.cos(math.radians(fAngle)), math.sin(math.radians(fAngle))))
+		
+		self.m_oCircleList.append(oCircle)
 	
 	# 상태를 갱신한다
 	def OnUpdate(self):
 		self.update()
 		
+		# 스페이스 키를 눌렀을 경우
+		if CInputManager.GetInst().IsKeyPress(Qt.Key_Space):
+			oCircleList = []
+			
+			for oCircle in self.m_oCircleList:
+				# 최소 크기 일 경우
+				if oCircle.GetRadius() <= 15.0:
+					oCircleList.append(oCircle)
+					
+				else:
+					for i in range(0, 2):
+						fAngle = random.random() * 360.0
+						
+						oSubCircle = CP12Circle(max(15.0, oCircle.GetRadius() / 2.0))
+						oSubCircle.SetPos(oCircle.GetPos())
+						oSubCircle.SetDirection(QPointF(math.cos(math.radians(fAngle)), math.sin(math.radians(fAngle))))
+						
+						oCircleList.append(oSubCircle)
+						
+			self.m_oCircleList = oCircleList
+		
+		# 위치를 갱신한다
+		for oCircle in self.m_oCircleList:
+			oNextPos = oCircle.GetPos() + (oCircle.GetDirection() * 350.0) * CTimeManager.GetInst().GetDeltaTime()
+			oNextPos.setX(max(oNextPos.x(), oCircle.GetRadius()))
+			oNextPos.setX(min(oNextPos.x(), self.geometry().width() - oCircle.GetRadius()))
+			
+			oNextPos.setY(max(oNextPos.y(), oCircle.GetRadius() + self.menuBar().geometry().height()))
+			oNextPos.setY(min(oNextPos.y(), self.geometry().height() - oCircle.GetRadius()))
+			
+			# 왼쪽 or 오른쪽 영역을 벗어났을 경우
+			if oNextPos.x() <= oCircle.GetRadius() or oNextPos.x() >= self.geometry().width() - oCircle.GetRadius():
+				oCircle.SetDirection(QPointF(oCircle.GetDirection().x() * -1.0, oCircle.GetDirection().y()))
+			
+			# 위쪽 or 아래쪽 영역을 벗어났을 경우
+			if oNextPos.y() <= oCircle.GetRadius() + self.menuBar().geometry().height() or oNextPos.y() >= self.geometry().height() - oCircle.GetRadius():
+				oCircle.SetDirection(QPointF(oCircle.GetDirection().x(), oCircle.GetDirection().y() * -1.0))
+			
+			oCircle.SetPos(oNextPos)
+			
 		# 관리자를 갱신한다
 		CTimeManager.GetInst().Update()
 		CInputManager.GetInst().Update()
@@ -65,7 +119,8 @@ class CPractice_12(QMainWindow, uic.loadUiType("Resources/Practice_12/P12MainWin
 		oPainter = QPainter(self)
 		
 		try:
-			pass
+			for oCircle in self.m_oCircleList:
+				oCircle.Draw(oPainter)
 		
 		finally:
 			oPainter.end()
