@@ -1,4 +1,4 @@
-Python 프로젝트
+Python 학습 주제
 - Example_03 (Python 기초)
 - Example_04 (연산자 및 제어문)
 - Example_05 (메서드 및 클래스 - 1)

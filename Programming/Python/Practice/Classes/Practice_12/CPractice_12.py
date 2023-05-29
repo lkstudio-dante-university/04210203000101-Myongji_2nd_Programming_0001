@@ -72,14 +72,14 @@ class CPractice_12(QMainWindow, uic.loadUiType("Resources/Practice_12/P12MainWin
 			
 			for oCircle in self.m_oCircleList:
 				# 최소 크기 일 경우
-				if oCircle.GetRadius() <= 15.0:
+				if oCircle.GetRadius() <= 10.0:
 					oCircleList.append(oCircle)
 					
 				else:
 					for i in range(0, 2):
 						fAngle = random.random() * 360.0
 						
-						oSubCircle = CP12Circle(max(15.0, oCircle.GetRadius() / 2.0))
+						oSubCircle = CP12Circle(max(10.0, oCircle.GetRadius() / 2.0))
 						oSubCircle.SetPos(oCircle.GetPos())
 						oSubCircle.SetDirection(QPointF(math.cos(math.radians(fAngle)), math.sin(math.radians(fAngle))))
 						
@@ -89,12 +89,9 @@ class CPractice_12(QMainWindow, uic.loadUiType("Resources/Practice_12/P12MainWin
 		
 		# 위치를 갱신한다
 		for oCircle in self.m_oCircleList:
-			oNextPos = oCircle.GetPos() + (oCircle.GetDirection() * 350.0) * CTimeManager.GetInst().GetDeltaTime()
-			oNextPos.setX(max(oNextPos.x(), oCircle.GetRadius()))
-			oNextPos.setX(min(oNextPos.x(), self.geometry().width() - oCircle.GetRadius()))
-			
-			oNextPos.setY(max(oNextPos.y(), oCircle.GetRadius() + self.menuBar().geometry().height()))
-			oNextPos.setY(min(oNextPos.y(), self.geometry().height() - oCircle.GetRadius()))
+			oNextPos = oCircle.GetPos() + (oCircle.GetDirection() * 450.0) * CTimeManager.GetInst().GetDeltaTime()
+			oNextPos.setX(min(self.geometry().width() - oCircle.GetRadius(), max(oNextPos.x(), oCircle.GetRadius())))
+			oNextPos.setY(min(self.geometry().height() - oCircle.GetRadius(), max(oNextPos.y(), oCircle.GetRadius() + self.menuBar().geometry().height())))
 			
 			# 왼쪽 or 오른쪽 영역을 벗어났을 경우
 			if oNextPos.x() <= oCircle.GetRadius() or oNextPos.x() >= self.geometry().width() - oCircle.GetRadius():

@@ -1,7 +1,5 @@
 import os
 import sys
-import math
-import random
 
 from PyQt5 import *
 from PyQt5 import uic
@@ -47,7 +45,7 @@ class CExample_12(QMainWindow, uic.loadUiType("Resources/Example_12/E12MainWindo
 		
 		# 도형을 설정한다
 		self.m_oCircle.SetPos(QPointF(self.geometry().width() / 2.0, self.geometry().height() / 2.0))
-		self.m_oCircle.SetDirection(QPointF(math.cos(math.radians(45.0)), math.sin(math.radians(45.0))))
+		self.m_oCircle.SetDirection(QPointF(1.0, 0.0))
 	
 	# 상태를 갱신한다
 	def OnUpdate(self):
@@ -66,16 +64,9 @@ class CExample_12(QMainWindow, uic.loadUiType("Resources/Example_12/E12MainWindo
 		oNextPos.setX(max(oNextPos.x(), self.m_oCircle.GetRadius()))
 		oNextPos.setX(min(oNextPos.x(), self.geometry().width() - self.m_oCircle.GetRadius()))
 		
-		oNextPos.setY(max(oNextPos.y(), self.m_oCircle.GetRadius() + self.menuBar().geometry().height()))
-		oNextPos.setY(min(oNextPos.y(), self.geometry().height() - self.m_oCircle.GetRadius()))
-		
 		# 왼쪽 or 오른쪽 영역을 벗어났을 경우
 		if oNextPos.x() <= self.m_oCircle.GetRadius() or oNextPos.x() >= self.geometry().width() - self.m_oCircle.GetRadius():
 			self.m_oCircle.SetDirection(QPointF(self.m_oCircle.GetDirection().x() * -1.0, self.m_oCircle.GetDirection().y()))
-			
-		# 위쪽 or 아래쪽 영역을 벗어났을 경우
-		if oNextPos.y() <= self.m_oCircle.GetRadius() + self.menuBar().geometry().height() or oNextPos.y() >= self.geometry().height() - self.m_oCircle.GetRadius():
-			self.m_oCircle.SetDirection(QPointF(self.m_oCircle.GetDirection().x(), self.m_oCircle.GetDirection().y() * -1.0))
 		
 		self.m_oCircle.SetPos(oNextPos)
 	
