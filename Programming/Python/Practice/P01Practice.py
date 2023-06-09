@@ -16,5 +16,5 @@ if __name__ == "__main__":
 	# CPractice_06.Start(sys.argv)
 	# CPractice_08.Start(sys.argv)
 	# CPractice_10.Start(sys.argv)
-	CPractice_12.Start(sys.argv)
-	# CPractice_15.Start(sys.argv)
+	# CPractice_12.Start(sys.argv)
+	CPractice_15.Start(sys.argv)
