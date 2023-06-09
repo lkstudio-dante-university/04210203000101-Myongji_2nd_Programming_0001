@@ -12,6 +12,11 @@ from Example.Classes.Global.Manager.CInputManager import *
 
 """
 기말 평가
+- 볼 반사 시뮬레이션 제작하기
+- 좌하단에 터렛을 배치 후 위/아래 방향키로 포신 각도 조절
+- 스페이스 키를 눌렀다가 때면 포신 각도로 볼 발사 (단, 스페이스 키를 오래 누를수록 볼 속도 증가)
+- 발사 된 볼이 벽에 부딛쳤을 경우 반사 (즉, 충돌한 벽에 따라 상/하 또는 좌/우로 반사)
+- 일정 횟수 이상 반사되면 볼 제거 (즉, 최대 반사 가능한 횟수 제한)
 """
 
 
@@ -20,10 +25,10 @@ class CPractice_15(QMainWindow, uic.loadUiType("Resources/Practice_15/P15MainWin
 	# 생성자
 	def __init__(self):
 		super().__init__()
-		self.__init__practice_10__()
+		self.__init__practice_15__()
 	
 	# 초기화
-	def __init__practice_10__(self):
+	def __init__practice_15__(self):
 		self.show()
 		self.setupUi(self)
 		self.setWindowTitle("Practice 15")
