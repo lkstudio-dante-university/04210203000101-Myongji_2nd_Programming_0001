@@ -10,6 +10,9 @@ from PyQt5.QtWidgets import *
 from Example.Classes.Global.Manager.CTimeManager import *
 from Example.Classes.Global.Manager.CInputManager import *
 
+from Practice.Classes.Practice_15.CP15Ball import *
+from Practice.Classes.Practice_15.CP15Turret import *
+
 """
 기말 평가
 - 볼 반사 시뮬레이션 제작하기
@@ -24,6 +27,15 @@ from Example.Classes.Global.Manager.CInputManager import *
 class CPractice_15(QMainWindow, uic.loadUiType("Resources/Practice_15/P15MainWindow.ui")[0]):
 	# 생성자
 	def __init__(self):
+		# 멤버 변수를 설정한다
+		self.m_bIsCharging = False
+		
+		self.m_fSpeed = 0.0
+		self.m_fMaxSpeed = 1000.0
+		
+		self.m_oTurret = CP15Turret(self)
+		self.m_oBallList = []
+		
 		super().__init__()
 		self.__init__practice_15__()
 	
@@ -51,6 +63,30 @@ class CPractice_15(QMainWindow, uic.loadUiType("Resources/Practice_15/P15MainWin
 	def OnUpdate(self):
 		self.update()
 		
+		# 스페이스 키를 눌렀을 경우
+		if CInputManager.GetInst().IsKeyDown(Qt.Key_Space):
+			self.m_bIsCharging = True
+			
+			self.m_fSpeed += (self.m_fMaxSpeed / 2.0) * CTimeManager.GetInst().GetDeltaTime()
+			self.m_fSpeed = min(self.m_fSpeed, self.m_fMaxSpeed)
+			
+		# 스페이스 키 눌림을 종료했을 경우
+		if self.m_bIsCharging and CInputManager.GetInst().IsKeyRelease(Qt.Key_Space):
+			oBall = CP15Ball(self)
+			oBall.m_oPos = self.m_oTurret.GetShootPos()
+			oBall.m_oVelocity = self.m_oTurret.GetShootDirection() * self.m_fSpeed
+			
+			self.m_fSpeed = 0.0
+			self.m_bIsCharging = False
+			self.m_oBallList.append(oBall)
+			
+		# 터렛을 갱신한다
+		self.m_oTurret.OnUpdate()
+		
+		# 볼을 갱신한다
+		for oBall in self.m_oBallList:
+			oBall.OnUpdate()
+		
 		# 관리자를 갱신한다
 		CTimeManager.GetInst().Update()
 		CInputManager.GetInst().Update()
@@ -64,8 +100,18 @@ class CPractice_15(QMainWindow, uic.loadUiType("Resources/Practice_15/P15MainWin
 		oPainter = QPainter(self)
 		
 		try:
-			pass
-		
+			self.m_oTurret.OnPaint(oPainter)
+			
+			for oBall in self.m_oBallList:
+				oBall.OnPaint(oPainter)
+				
+			oSrcPos = QPoint(self.geometry().width() - 310, self.geometry().height() - 40)
+			oPainter.drawRect(oSrcPos.x(), oSrcPos.y(), 300, 30)
+			
+			fPercent = self.m_fSpeed / self.m_fMaxSpeed
+			
+			oPainter.setBrush(QBrush(QColor(255, 0, 0, 255)))
+			oPainter.drawRect(oSrcPos.x(), oSrcPos.y(), int(300 * fPercent), 30)
 		finally:
 			oPainter.end()
 	
