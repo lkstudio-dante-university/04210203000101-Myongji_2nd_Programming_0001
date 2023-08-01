@@ -9,4 +9,3 @@ Python 학습 주제
 - Example_11 (GUI 프로그래밍 - 3)
 - Example_12 (GUI 프로그래밍 - 4)
 - Example_13 (GUI 프로그래밍 - 5)
-- Example_14 (GUI 프로그래밍 - 6)

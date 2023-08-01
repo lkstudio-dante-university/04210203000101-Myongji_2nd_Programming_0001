@@ -17,8 +17,6 @@ from Example.Classes.Example_10.CExample_10 import *
 from Example.Classes.Example_11.CExample_11 import *
 from Example.Classes.Example_12.CExample_12 import *
 from Example.Classes.Example_13.CExample_13 import *
-from Example.Classes.Example_14.CExample_14 import *
-from Example.Classes.Example_15.CExample_15 import *
 
 """
 PyQt 학습 사이트
@@ -70,6 +68,4 @@ if __name__ == "__main__":
 	# CExample_10.Start(sys.argv)
 	# CExample_11.Start(sys.argv)
 	# CExample_12.Start(sys.argv)
-	# CExample_13.Start(sys.argv)
-	# CExample_14.Start(sys.argv)
-	CExample_15.Start(sys.argv)
+	CExample_13.Start(sys.argv)
