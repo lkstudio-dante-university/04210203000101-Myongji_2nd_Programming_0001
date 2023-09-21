@@ -17,7 +17,7 @@ using UnityEngine;
  * 스크립트 컴포넌트는 C# 클래스를 통해서 제작하는 것이 가능하다.
  * 
  * Unity 스크립트 컴포넌트 제작 규칙
- * - 파일 이름과 C# 클래스 이름 일치
+ * - 파일 이름과 C# 클래스 이름 일치 (2021 이하 버전)
  * - 직/간접적으로 MonoBehaviour 클래스 상속
  * 
  * C# 클래스가 스크립트 컴포넌트가 되기 위해서는 반드시 위의 규칙을 따라야한다. (즉, 스크립트 컴포넌트 제작 규칙 중 하나라도
@@ -60,6 +60,11 @@ namespace E01 {
 				 * 활용하면 새로운 게임 객체를 손쉽게 생성하는 것이 가능하다.)
 				 */
 				var oGameObj = Instantiate(m_oOriginTarget, Vector3.zero, Quaternion.identity);
+
+				/*
+				 * Transform 의 SetParent 메서드는 부모 객체를 지정하는 역할을 수행한다. (즉, 해당 메서드를 활용하면
+				 * 특정 게임 객체의 자식으로 특정 객체를 추가하는 것이 가능하다.)
+				 */
 				oGameObj.transform.SetParent(m_oTargetRoot.transform, false);
 			}
 		}
