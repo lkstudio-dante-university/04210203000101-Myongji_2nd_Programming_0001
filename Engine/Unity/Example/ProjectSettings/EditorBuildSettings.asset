@@ -4,5 +4,54 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_01 (\uAE30\uCD08).unity"
+    guid: c865570af52ca3c438437950059ae08f
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_02 (\uCE74\uBA54\uB77C).unity"
+    guid: 5c7d44689d79f4344a1a424c0ebb28de
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_03 (\uD504\uB9AC\uD339 \uBC0F \uC2A4\uD06C\uB9BD\uD2B8).unity"
+    guid: 1c0257459be1d9646a9f736a6c6f2cdb
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_04 (\uAD11\uC6D0 \uBC0F \uC7AC\uC9C8).unity"
+    guid: 7e0d8b3aa989f59489085a4d6e0beade
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_05 (C# \uAE30\uCD08 - \uC790\uB8CC\uD615
+      \uBC0F \uBCC0\uC218).unity"
+    guid: cad6669071fd98343bf452cc80a4787d
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_06 (C# \uAE30\uCD08 - \uCEEC\uB809\uC158).unity"
+    guid: 21210bad8bb280946a2df04f795afe54
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_07 (C# \uAE30\uCD08 - \uD074\uB798\uC2A4).unity"
+    guid: 645acdc293c97e648b0b83b516804053
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_08 (C# \uAE30\uCD08 - \uC0C1\uC18D
+      \uBC0F \uB2E4\uD615\uC131).unity"
+    guid: 89a81496d0c3a4c43ad9519f491e3bc3
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_09 (C# \uAE30\uCD08 - \uAC00\uC0C1
+      \uBA54\uC11C\uB4DC).unity"
+    guid: 0dedfa3356efdea4a85100dcb7723c77
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_10 (C# \uAE30\uCD08 - \uC0AC\uC6A9\uC790
+      \uC815\uC758 \uC790\uB8CC\uD615).unity"
+    guid: d308634b7a7b59f47a1bb018a2f578b7
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_11 (\uBB3C\uB9AC).unity"
+    guid: e63dadd1ecaedb94a86b5cc7894a9271
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_12 (\uD50C\uB798\uD53C \uBC84\uB4DC
+      - \uC2DC\uC791).unity"
+    guid: f4253dfc826b3624189d1c12b43f0327
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_13 (\uD50C\uB798\uD53C \uBC84\uB4DC
+      - \uD50C\uB808\uC774).unity"
+    guid: b79bcf7b9aae3c946ad5ca0c8c40bdad
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_14 (\uD50C\uB798\uD53C \uBC84\uB4DC
+      - \uACB0\uACFC).unity"
+    guid: f23efa9fc75b94e40ab4aab89ebaf0c2
   m_configObjects: {}
