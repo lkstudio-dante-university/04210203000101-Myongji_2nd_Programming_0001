@@ -39,7 +39,7 @@ namespace E01 {
 	 * - private		<- 클래스 내부에서 접근 가능
 	 */
 	/** 캐릭터 */
-	public class CE07Character {
+	public class CE01Character_07 {
 		public int m_nLV = 0;
 		public int m_nHP = 0;
 		public int m_nATK = 0;
@@ -60,12 +60,12 @@ namespace E01 {
 		 * 있다.)
 		 */
 		/** 생성자 */
-		public CE07Character() {
+		public CE01Character_07() {
 			// Do Something
 		}
 
 		/** 생성자 */
-		public CE07Character(int a_nLV, int a_nHP, int a_nATK) {
+		public CE01Character_07(int a_nLV, int a_nHP, int a_nATK) {
 			m_nLV = a_nLV;
 			m_nHP = a_nHP;
 			m_nATK = a_nATK;
@@ -81,6 +81,61 @@ namespace E01 {
 
 	/** Example 7 */
 	public partial class CE01Example_07 : CE01SceneManager {
+		/*
+		 * 프로퍼티란?
+		 * - 접근자 메서드를 구현 할 수 있는 기능을 의미한다. (즉, 프로퍼티를 활용하면 접근자 메서드를 구현하는 전통적인
+		 * 방식에 비해 좀 더 수월하게 접근자 메서드를 구현하는 것이 가능하다.)
+		 * 
+		 * 접근자 메서드란?
+		 * - 클래스의 멤버 변수는 일반적으로 외부에서 함부로 접근 할 수 없도록 private 수준으로 보호하는 것이 관례이다.
+		 * 
+		 * 따라서, 클래스 외부에서 멤버 변수에 접근하기 위한 방법이 필요하면 이때 구현하는 것이 바로 접근자 메서드이다.
+		 * (즉, 접근자 메서드는 단순히 클래스 외부에 값을 반환하거나 클래스 외부에서 값을 설정하기 위한 메서드를 의미한다.)
+		 * 
+		 * Ex)
+		 * public class CSomeClass {
+		 *     private int m_nVal = 0;
+		 *     
+		 *     public int GetVal() {
+		 *         return m_nVal;
+		 *     }
+		 *     
+		 *     public void SetVal(int a_nVal) {
+		 *         m_nVal = a_nVal;
+		 *     }
+		 * }
+		 * 
+		 * 위와 같이 클래스 외부에 멤버 변수의 값을 사용 할 수 있도록 반환해주는 Get 계열 메서드를 Getter 라고 하며 외부에서
+		 * 멤버 변수의 값을 변경 할 수 있도록 해주는 Set 계열 메서드를 Setter 라고 한다. (즉, 접근자 메서드라는 것은 Getter
+		 * 와 Setter 를 지칭한다는 것을 알 수 있다.)
+		 * 
+		 * C# 프로퍼티 구현 방법
+		 * - 자료형 + 프로퍼티 이름 + 접근자 영역
+		 * 
+		 * Ex)
+		 * public class CSomeClass {
+		 *     private int m_nVal = 0;
+		 * 
+		 *     public int Val {
+		 *         get {
+		 *             return m_nVal;
+		 *         } set {
+		 *             m_nVal = value;
+		 *         }
+		 *     }
+		 * }
+		 * 
+		 * var oSomeObj = new CSomeClass();
+		 * oSomeObj.Val = 10;					<- Setter 호출
+		 * 
+		 * Debug.Log($"{oSomeObj.Val}");		<- Getter 호출
+		 * 
+		 * 프로퍼티를 활용하면 일반적인 변수를 사용하는 것처럼 접근자 메서드를 사용 할 수 있기 때문에 전통적인 접근자 메서드를
+		 * 구현하는 방법에 비해서 좀 더 가독성이 향상 된다는 것을 알 수 있다.
+		 * 
+		 * 프로퍼티의 Getter 와 Setter 는 필요에 따라 생략하는 것이 가능하다. (즉, 둘 중 하나만 구현해도 컴파일 에러가 
+		 * 발생하지 않는다는 것을 알 수 있다.)
+		 */
 		#region 프로퍼티
 		public override string SceneName => KE01Define.G_SCENE_N_EXAMPLE_07;
 		#endregion // 프로퍼티
@@ -101,12 +156,12 @@ namespace E01 {
 			 * 단, 해당 키워드를 통해서 선언 된 변수는 반드시 초기화 값을 명시해줘야한다. (즉, C# 컴파일러는 초기화 값의
 			 * 자료형을 기반으로 해당 변수의 자료형을 지정한다는 것을 알 수 있다.)
 			 */
-			var oCharacter01 = new CE07Character();
+			var oCharacter01 = new CE01Character_07();
 			oCharacter01.m_nLV = 1;
 			oCharacter01.m_nHP = 10;
 			oCharacter01.m_nATK = 15;
 
-			var oCharacter02 = new CE07Character(1, 10, 15);
+			var oCharacter02 = new CE01Character_07(1, 10, 15);
 
 			Debug.Log("=====> 캐릭터 - 1 <=====");
 			oCharacter01.ShowInfo();

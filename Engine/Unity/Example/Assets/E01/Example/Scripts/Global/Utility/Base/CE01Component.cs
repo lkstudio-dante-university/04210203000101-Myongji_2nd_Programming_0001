@@ -6,8 +6,8 @@ namespace E01 {
 	/** 컴포넌트 */
 	public abstract partial class CE01Component : MonoBehaviour {
 		#region 프로퍼티
-		public bool IsDirtySaveInfo { get; private set; } = false;
-		public bool IsDirtyUpdateState { get; private set; } = false;
+		public bool IsDirtySaveInfo { get; private set; } = true;
+		public bool IsDirtyUpdateState { get; private set; } = true;
 
 		public float SaveSkipTime { get; private set; } = 0.0f;
 		public float UpdateSkipTime { get; private set; } = 0.0f;

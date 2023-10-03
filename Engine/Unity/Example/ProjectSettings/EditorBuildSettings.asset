@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_00 (\uBA54\uB274).unity"
+    guid: 5628ac655ababb04aba404ff50115ef2
+  - enabled: 1
     path: "Assets/E01/Example/Scenes/E01Example_01 (\uAE30\uCD08).unity"
     guid: c865570af52ca3c438437950059ae08f
   - enabled: 1
@@ -54,4 +57,27 @@ EditorBuildSettings:
     path: "Assets/E01/Example/Scenes/E01Example_14 (\uD50C\uB798\uD53C \uBC84\uB4DC
       - \uACB0\uACFC).unity"
     guid: f23efa9fc75b94e40ab4aab89ebaf0c2
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_15 (\uC2A4\uD504\uB77C\uC774\uD2B8
+      \uBC0F \uC560\uB2C8\uBA54\uC774\uC158).unity"
+    guid: fca399e823289f940b011532d84230cd
+  - enabled: 1
+    path: Assets/E01/Example/Scenes/E01Example_16 (UGUI).unity
+    guid: f5d0143caadda9445ad97c4819325474
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_17 (\uB450\uB354\uC9C0 \uC7A1\uAE30
+      - \uC2DC\uC791).unity"
+    guid: e263785aa8eb09a4c8ef651782457a7e
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_18 (\uB450\uB354\uC9C0 \uC7A1\uAE30
+      - \uD50C\uB808\uC774).unity"
+    guid: 2793df466f0bd68418a51b0c2c60349f
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_19 (\uB450\uB354\uC9C0 \uC7A1\uAE30
+      - \uACB0\uACFC).unity"
+    guid: 64256ecef234db047bbe178bf23d07de
+  - enabled: 1
+    path: "Assets/E01/Example/Scenes/E01Example_20 (\uB0B4\uBE44\uAC8C\uC774\uC158
+      \uBA54\uC26C).unity"
+    guid: 4c8eb23de3e1b904c84cc3a80e64f260
   m_configObjects: {}

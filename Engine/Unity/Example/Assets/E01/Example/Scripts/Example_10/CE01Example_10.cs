@@ -19,40 +19,6 @@ using UnityEngine;
  * - 열거형
  */
 namespace E01 {
-	/** Example 10 */
-	public partial class CE01Example_10 : CE01SceneManager {
-		#region 프로퍼티
-		public override string SceneName => KE01Define.G_SCENE_N_EXAMPLE_10;
-		#endregion // 프로퍼티
-
-		#region 함수
-		/** 초기화 */
-		public override void Awake() {
-			base.Awake();
-
-#if E10_STRUCTURE
-
-#elif E10_ENUMERATION
-			/*
-			 * 열거형은 사용자 정의 자료형 중 하나이기 때문에 특정 열거형을 사용해서 변수를 선언할 수 있다.  (즉, 열거형을 
-			 * 자료형처럼 사용하는 것이 가능하다.)
-			 * 
-			 * Random 클래스란?
-			 * - 불규칙한 값을 생성 할 수 있는 여러 기능을 제공하는 클래스를 의미한다. (즉, 해당 클래스를 활용하면 손쉽게
-			 * 난수를 생성하는 것이 가능하다는 것을 알 수 있다.)
-			 */
-			EItemType eItemType = (EItemType)Random.Range(0, (int)EItemType.MAX_VAL);
-
-			switch(eItemType) {
-				case EItemType.GOLD: Debug.Log("골드를 획득했습니다."); break;
-				case EItemType.POTION: Debug.Log("포션을 획득했습니다."); break;
-				case EItemType.EQUIPMENT: Debug.Log("장비를 획득했습니다."); break;
-			}
-#endif // #if E10_STRUCTURE
-		}
-		#endregion // 함수
-	}
-
 #if E10_STRUCTURE
 	/*
 	 * 구조체란?
@@ -83,7 +49,7 @@ namespace E01 {
 	 * 관례이다.
 	 */
 	/** 데이터 */
-	public struct STE01_10Data {
+	public struct STE01Data_10 {
 		public int m_nVal;
 		public float m_fVal;
 
@@ -95,7 +61,7 @@ namespace E01 {
 		 * 않을 경우 컴파일 에러가 발생한다는 것을 알 수 있다.)
 		 */
 		/** 생성자 */
-		public STE01_10Data(int a_nVal, float a_fVal) {
+		public STE01Data_10(int a_nVal, float a_fVal) {
 			m_nVal = a_nVal;
 			m_fVal = a_fVal;
 		}
@@ -136,4 +102,50 @@ namespace E01 {
 		[HideInInspector] MAX_VAL
 	}
 #endif // #if E10_STRUCTURE
+
+	/** Example 10 */
+	public partial class CE01Example_10 : CE01SceneManager {
+		#region 프로퍼티
+		public override string SceneName => KE01Define.G_SCENE_N_EXAMPLE_10;
+		#endregion // 프로퍼티
+
+		#region 함수
+		/** 초기화 */
+		public override void Awake() {
+			base.Awake();
+
+#if E10_STRUCTURE
+			var stData01 = new STE01Data_10();
+			stData01.m_nVal = 10;
+			stData01.m_fVal = 3.14f;
+
+			var stData02 = new STE01Data_10(10, 3.14f);
+
+			Debug.Log("=====> 데이터 - 1 <=====");
+			Debug.Log($"정수 : {stData01.m_nVal}");
+			Debug.Log($"실수 : {stData01.m_fVal}");
+
+			Debug.Log("=====> 데이터 - 2 <=====");
+			Debug.Log($"정수 : {stData02.m_nVal}");
+			Debug.Log($"실수 : {stData02.m_fVal}");
+#elif E10_ENUMERATION
+			/*
+			 * 열거형은 사용자 정의 자료형 중 하나이기 때문에 특정 열거형을 사용해서 변수를 선언할 수 있다.  (즉, 열거형을 
+			 * 자료형처럼 사용하는 것이 가능하다.)
+			 * 
+			 * Random 클래스란?
+			 * - 불규칙한 값을 생성 할 수 있는 여러 기능을 제공하는 클래스를 의미한다. (즉, 해당 클래스를 활용하면 손쉽게
+			 * 난수를 생성하는 것이 가능하다는 것을 알 수 있다.)
+			 */
+			EItemType eItemType = (EItemType)Random.Range(0, (int)EItemType.MAX_VAL);
+
+			switch(eItemType) {
+				case EItemType.GOLD: Debug.Log("골드를 획득했습니다."); break;
+				case EItemType.POTION: Debug.Log("포션을 획득했습니다."); break;
+				case EItemType.EQUIPMENT: Debug.Log("장비를 획득했습니다."); break;
+			}
+#endif // #if E10_STRUCTURE
+		}
+		#endregion // 함수
+	}
 }
