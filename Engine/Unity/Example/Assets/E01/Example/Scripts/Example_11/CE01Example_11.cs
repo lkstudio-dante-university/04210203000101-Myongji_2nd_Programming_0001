@@ -28,7 +28,7 @@ using UnityEngine.UI;
  * - Rigidbody
  * 
  * Collider 컴포넌트란?
- * - Unity 씬 상에 배치 된 물체의 실질적인 모양을 나타내는 역할을 수행한다. (즉, Unity 물리 엔진은 Collider  컴포넌트를 
+ * - Unity 씬 상에 배치 된 물체의 실질적인 모양을 나타내는 역할을 수행한다. (즉, Unity 물리 엔진은 Collider 컴포넌트를 
  * 기반으로 해당 물체의 모양 및 크기를 계산하기 때문에 화면에 그려지는 물체의 모양과 물리 엔진 상에서의 모양은 서로 다를 수 
  * 있다는 것을 알 수 있다.)
  * 
@@ -59,9 +59,10 @@ namespace E01 {
 		[Header("=====> Game Objects <=====")]
 		[SerializeField] private GameObject m_oPhysics01Target = null;
 		[SerializeField] private GameObject m_oPhysics02Target = null;
+		[SerializeField] private GameObject m_oPhysics02ObstacleRoot = null;
 
 #if E11_PHYSICS_02
-		private bool m_bIsEnableShoot = true;
+		private bool m_bIsShoot = false;
 		private float m_fShootPower = 0.0f;
 #endif // #if E11_PHYSICS_01
 		#endregion // 변수
@@ -74,6 +75,7 @@ namespace E01 {
 		/** 초기화 */
 		public override void Awake() {
 			base.Awake();
+			this.UpdateObstaclePhysicsState(false);
 
 			var oRigidbody = m_oPhysics02Target.GetComponent<Rigidbody>();
 			oRigidbody.useGravity = false;
@@ -123,8 +125,8 @@ namespace E01 {
 				Debug.LogFormat("{0} 물체와 충돌했습니다.", stRaycastHit.collider.name);
 			}
 #elif E11_PHYSICS_02
-			// 발사가 불가능 할 경우
-			if(!m_bIsEnableShoot) {
+			// 발사 상태 일 경우
+			if(m_bIsShoot) {
 				return;
 			}
 
@@ -182,7 +184,8 @@ namespace E01 {
 				oRigidbody.useGravity = true;
 				oRigidbody.AddForceAtPosition(stForce, stForcePos, ForceMode.VelocityChange);
 
-				m_bIsEnableShoot = false;
+				m_bIsShoot = true;
+				this.UpdateObstaclePhysicsState(true);
 			}
 #endif // E11_PHYSICS_01
 		}
@@ -192,18 +195,32 @@ namespace E01 {
 #if E11_PHYSICS_02
 			m_oPhysics02ShootPowerText.text = $"{m_fShootPower * 100.0f:0}";
 #endif // #if E11_PHYSICS_01
-	}
+		}
+
+		/** 장애물 물리 상태를 갱신한다 */
+		private void UpdateObstaclePhysicsState(bool a_bIsEnable) {
+			/*
+			 * Transform 컴포넌트를 활용하면 특정 게임 객체의 자식 게임 객체에 접근하는 것이 가능하다. (즉, Transform
+			 * 컴포넌트에는 게임 객체의 변환에 대한 정보와 더불어 계층적인 관계를 제어 할 수 있는 여러 기능을 지원한다는
+			 * 것을 알 수 있다.)
+			 */
+			for(int i = 0; i < m_oPhysics02ObstacleRoot.transform.childCount; ++i) {
+				var oObstacleRigidbody = m_oPhysics02ObstacleRoot.transform.GetChild(i).GetComponent<Rigidbody>();
+				oObstacleRigidbody.useGravity = a_bIsEnable;
+				oObstacleRigidbody.constraints = a_bIsEnable ? RigidbodyConstraints.None : RigidbodyConstraints.FreezeAll;
+			}
+		}
 
 #if UNITY_EDITOR
-	/*
-	 * OnDrawGizmos 계열 메서드를 활용하면 Unity 에디터 씬 뷰에 간단한 그래픽을 출력하는 것이 가능하다. (즉, 해당 
-	 * 메서드를 활용하면 프로젝트를 개발하는데 필요한 여러 정보를 씬 뷰에 출력하는 것이 가능하다.)
-	 * 
-	 * 단, 해당 메서드는 Unity 에디터 상에서만 사용 가능하기 때문에 해당 메서드를 반드시 UNITY_EDITOR 심볼로 감싸주는
-	 * 것을 추천한다. (즉, UNITY_EDITOR 심볼로 지정 된 영역은 Unity 에디터 상에서만 동작한다는 것을 알 수 있다.)
-	 */
-	/** 기즈모를 그린다 */
-	public void OnDrawGizmos() {
+		/*
+		 * OnDrawGizmos 계열 메서드를 활용하면 Unity 에디터 씬 뷰에 간단한 그래픽을 출력하는 것이 가능하다. (즉, 해당 
+		 * 메서드를 활용하면 프로젝트를 개발하는데 필요한 여러 정보를 씬 뷰에 출력하는 것이 가능하다.)
+		 * 
+		 * 단, 해당 메서드는 Unity 에디터 상에서만 사용 가능하기 때문에 해당 메서드를 반드시 UNITY_EDITOR 심볼로 감싸주는
+		 * 것을 추천한다. (즉, UNITY_EDITOR 심볼로 지정 된 영역은 Unity 에디터 상에서만 동작한다는 것을 알 수 있다.)
+		 */
+		/** 기즈모를 그린다 */
+		public void OnDrawGizmos() {
 			/*
 			 * Gizmos 클래스란?
 			 * - Unity 에디터 씬 뷰에 여러가지 정보를 출력하기 위한 역할을 수행하는 클래스를 의미한다.
@@ -219,11 +236,13 @@ namespace E01 {
 			 * 사용하면 좀 더 안전하게 작성하는 것이 가능하다.)
 			 */
 			try {
+#if E11_PHYSICS_01
 				var stEndPos = m_oPhysics01Target.transform.position;
 				stEndPos += m_oPhysics01Target.transform.forward * 500.0f;
 
 				Gizmos.color = Color.red;
 				Gizmos.DrawLine(m_oPhysics01Target.transform.position, stEndPos);
+#endif // #if E11_PHYSICS_01
 			} finally {
 				Gizmos.color = stPrevColor;
 			}

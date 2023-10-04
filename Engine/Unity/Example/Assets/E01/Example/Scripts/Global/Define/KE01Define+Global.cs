@@ -17,6 +17,9 @@ namespace E01 {
 		public const float G_DISTANCE_CAMERA_FAR_PLANE = 25000.0f;
 		public const float G_DISTANCE_CAMERA_NEAR_PLANE = 0.1f;
 
+		// 물리
+		public static readonly Vector3 G_PHYSICS_GRAVITY = new Vector3(0.0f, -1960.0f, 0.0f);
+
 		// 씬 이름
 		public const string G_SCENE_N_EXAMPLE_00 = "E01Example_00 (메뉴)";
 		public const string G_SCENE_N_EXAMPLE_01 = "E01Example_01 (기초)";
@@ -33,6 +36,8 @@ namespace E01 {
 		public const string G_SCENE_N_EXAMPLE_12 = "E01Example_12 (플래피 버드 - 시작)";
 		public const string G_SCENE_N_EXAMPLE_13 = "E01Example_13 (플래피 버드 - 플레이)";
 		public const string G_SCENE_N_EXAMPLE_14 = "E01Example_14 (플래피 버드 - 결과)";
+		public const string G_SCENE_N_EXAMPLE_15 = "E01Example_15 (스프라이트 및 애니메이션)";
+		public const string G_SCENE_N_EXAMPLE_16 = "E01Example_16 (GUI)";
 		#endregion // 기본
 	}
 }

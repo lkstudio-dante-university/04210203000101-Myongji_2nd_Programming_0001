@@ -37,7 +37,7 @@ namespace E01 {
 	 *     public float m_fVal;
 	 * }
 	 * 
-	 * 클래스 vs 구조체
+	 * 구조체 vs 클래스
 	 * - 구조체는 단순한 데이터의 집합을 표현하는데 주로 활용되기 때문에 클래스에서 지원하는 상속과 다형성을 사용하는 것이
 	 * 불가능하다. (즉, 구조체를 통해서도 특정 사물을 표현하는 것이 가능하지만 클래스에 비해서 사물을 표현 할 수 있는 방법이
 	 * 제한적이라는 것을 알 수 있다.)
@@ -72,6 +72,17 @@ namespace E01 {
 	 * - 심볼릭 상수를 정의 할 수 있는 기능을 의미한다. (즉, 열거형을 이용하면 특정 데이터를 구분 할 수 있는 식별자를 좀 더
 	 * 수월하게 정의하는 것이 가능하다.)
 	 * 
+	 * C# 열거형 선언 방법
+	 * - enum + 열거형 이름 + 열거형 상수
+	 * 
+	 * Ex)
+	 * enum ESomeEnum {
+	 *     NONE = -1,
+	 *     CONST_01,
+	 *     CONST_02,
+	 *     MAX_VAL
+	 * }
+	 * 
 	 * 상수란?
 	 * - 데이터를 저장하고 읽어들일 수 있는 공간을 의미한다. 
 	 * 
@@ -83,7 +94,7 @@ namespace E01 {
 	 * - 심볼릭 상수
 	 * 
 	 * 리터널 상수란?
-	 * - 이름이 존재하지 않는 상수를 의미한다. 
+	 * - 이름이 존재하지 않는 상수를 의미한다.
 	 * 
 	 * 따라서, 일반적으로 리터널 상수는 재사용하는 것이 불가능하다는 것을 알 수 있다.  (즉, 리너털 상수는 일회성 상수라는 
 	 * 것을 알 수 있다.)
@@ -94,7 +105,7 @@ namespace E01 {
 	 * 따라서, 심볼릭 상수는 필요에 따라 얼마든지 재사용하는 것이 가능하다. (즉, 변수와 마찬가지로 심볼릭 상수는 이름이
 	 * 존재하기 때문에 해당 이름을 활용해서 언제든지 상수에 접근하는 것이 가능하다는 것을 알 수 있다.)
 	 */
-	enum EItemType {
+	public enum EE01ItemType_10 {
 		NONE = -1,
 		GOLD,
 		POTION,
@@ -119,7 +130,11 @@ namespace E01 {
 			stData01.m_nVal = 10;
 			stData01.m_fVal = 3.14f;
 
-			var stData02 = new STE01Data_10(10, 3.14f);
+			var stData02 = new STE01Data_10() {
+				m_nVal = 10, m_fVal = 3.14f
+			};
+
+			var stData03 = new STE01Data_10(10, 3.14f);
 
 			Debug.Log("=====> 데이터 - 1 <=====");
 			Debug.Log($"정수 : {stData01.m_nVal}");
@@ -128,6 +143,10 @@ namespace E01 {
 			Debug.Log("=====> 데이터 - 2 <=====");
 			Debug.Log($"정수 : {stData02.m_nVal}");
 			Debug.Log($"실수 : {stData02.m_fVal}");
+
+			Debug.Log("=====> 데이터 - 3 <=====");
+			Debug.Log($"정수 : {stData03.m_nVal}");
+			Debug.Log($"실수 : {stData03.m_fVal}");
 #elif E10_ENUMERATION
 			/*
 			 * 열거형은 사용자 정의 자료형 중 하나이기 때문에 특정 열거형을 사용해서 변수를 선언할 수 있다.  (즉, 열거형을 
@@ -137,12 +156,12 @@ namespace E01 {
 			 * - 불규칙한 값을 생성 할 수 있는 여러 기능을 제공하는 클래스를 의미한다. (즉, 해당 클래스를 활용하면 손쉽게
 			 * 난수를 생성하는 것이 가능하다는 것을 알 수 있다.)
 			 */
-			EItemType eItemType = (EItemType)Random.Range(0, (int)EItemType.MAX_VAL);
+			EE01ItemType_10 eItemType = (EE01ItemType_10)Random.Range(0, (int)EE01ItemType_10.MAX_VAL);
 
 			switch(eItemType) {
-				case EItemType.GOLD: Debug.Log("골드를 획득했습니다."); break;
-				case EItemType.POTION: Debug.Log("포션을 획득했습니다."); break;
-				case EItemType.EQUIPMENT: Debug.Log("장비를 획득했습니다."); break;
+				case EE01ItemType_10.GOLD: Debug.Log("골드를 획득했습니다."); break;
+				case EE01ItemType_10.POTION: Debug.Log("포션을 획득했습니다."); break;
+				case EE01ItemType_10.EQUIPMENT: Debug.Log("장비를 획득했습니다."); break;
 			}
 #endif // #if E10_STRUCTURE
 		}

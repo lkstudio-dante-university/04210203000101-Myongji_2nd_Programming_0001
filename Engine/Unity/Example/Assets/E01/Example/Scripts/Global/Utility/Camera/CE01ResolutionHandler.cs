@@ -43,9 +43,10 @@ namespace E01 {
 				return;
 			}
 
+			oCamera.fieldOfView = this.FOV * Mathf.Rad2Deg;
 			oCamera.farClipPlane = KE01Define.G_DISTANCE_CAMERA_FAR_PLANE;
 			oCamera.nearClipPlane = KE01Define.G_DISTANCE_CAMERA_NEAR_PLANE;
-			oCamera.fieldOfView = this.FOV * Mathf.Rad2Deg;
+
 			oCamera.orthographic = m_eProjection == EProjection._2D;
 			oCamera.orthographicSize = this.OrthographicSize;
 

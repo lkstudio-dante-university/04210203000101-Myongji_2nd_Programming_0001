@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace E01 {
+	/*
+	 * 싱글턴 패턴이란?
+	 * - 프로그램이 실행 중에 생성하는 특정 객체의 개수를 하나로 제한하기 위한 패턴을 의미한다. (즉, 해당 패턴을 활용하면
+	 * 프로그램이 실행 중에 전역적으로 사용되는 객체를 생성 및 제어하는 것이 가능하다.)
+	 */
 	/** 싱글턴 */
 	public partial class CE01Singleton<T> : CE01Component where T : CE01Singleton<T> {
 		#region 클래스 변수

@@ -13,7 +13,7 @@ namespace E01 {
 		/** 초기화 */
 		public override void Awake() {
 			base.Awake();
-			Physics.gravity = new Vector3(0.0f, -1960.0f, 0.0f);
+			Physics.gravity = KE01Define.G_PHYSICS_GRAVITY;
 		}
 		#endregion // 함수
 	}

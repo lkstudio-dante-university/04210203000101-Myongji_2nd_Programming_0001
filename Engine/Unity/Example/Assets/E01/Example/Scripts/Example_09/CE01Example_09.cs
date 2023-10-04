@@ -70,7 +70,7 @@ namespace E01 {
 			oBase01.ShowInfo();
 			oBase01.ShowInfoVirtual();
 
-			Debug.Log("=====> 메서드 호출 - 2<=====");
+			Debug.Log("=====> 메서드 호출 - 2 <=====");
 			oBase02.ShowInfo();
 			oBase02.ShowInfoVirtual();
 		}

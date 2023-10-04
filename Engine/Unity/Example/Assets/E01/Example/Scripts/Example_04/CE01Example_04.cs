@@ -1,3 +1,6 @@
+//#define E04_LIGHT
+#define E04_MATERIAL
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,7 +49,10 @@ namespace E01 {
 	/** Example 4 */
 	public partial class CE01Example_04 : CE01SceneManager {
 		#region 변수
-		[SerializeField] private GameObject m_oMainLight = null;
+		[SerializeField] private Material m_oMaterialTarget = null;
+
+		[Header("=====> Game Objects <=====")]
+		[SerializeField] private GameObject m_oLightMain = null;
 		#endregion // 변수
 
 		#region 프로퍼티
@@ -63,6 +69,7 @@ namespace E01 {
 		public override void Update() {
 			base.Update();
 
+#if E04_LIGHT
 			// 상/하 방향 키를 눌렀을 경우
 			if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow)) {
 				float fAngle = Input.GetKey(KeyCode.UpArrow) ? -180.0f : 180.0f;
@@ -84,14 +91,37 @@ namespace E01 {
 				 * 사원수 회전은 오일러 회전에 비해 4 개의 요소만으로 회전을 표현하는 것이 가능하기 때문에 Unity 엔진을
 				 * 비롯한 여러 그래픽스 프로그램에서 활용된다는 특징이 존재한다.
 				 */
-				m_oMainLight.transform.Rotate(Vector3.right, fAngle * Time.deltaTime, Space.World);
+				m_oLightMain.transform.Rotate(Vector3.right, fAngle * Time.deltaTime, Space.World);
 			}
 
 			// 좌/우 방향 키를 눌렀을 경우
 			if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
 				float fAngle = Input.GetKey(KeyCode.LeftArrow) ? -180.0f : 180.0f;
-				m_oMainLight.transform.Rotate(Vector3.up, fAngle * Time.deltaTime, Space.World);
+				m_oLightMain.transform.Rotate(Vector3.up, fAngle * Time.deltaTime, Space.World);
 			}
+#elif E04_MATERIAL
+			// 빨간색 키를 눌렀을 경우
+			if(Input.GetKeyDown(KeyCode.Alpha1)) {
+				/*
+				 * Material 클래스가 제공하는 여러 기능들을 활용하면 프로그램이 실행 중에 특정 물체의 표면을 표현하기 위한
+				 * 정보를 변경하는 것이 가능하다. (즉, Material 클래스는 쉐이더가 동작하는데 필요한 여러 정보를 설정 할 수
+				 * 있도록 접근자 메서드를 지원한다는 것을 알 수 있다.)
+				 */
+				m_oMaterialTarget.color = Color.red;
+			}
+			// 녹색 키를 눌렀을 경우
+			else if(Input.GetKeyDown(KeyCode.Alpha2)) {
+				m_oMaterialTarget.color = Color.green;
+			}
+			// 파란색 키를 눌렀을 경우
+			else if(Input.GetKeyDown(KeyCode.Alpha3)) {
+				m_oMaterialTarget.color = Color.blue;
+			}
+			// 취소 키를 눌렀을 경우
+			else if(Input.GetKeyDown(KeyCode.Space)) {
+				m_oMaterialTarget.color = Color.white;
+			}
+#endif // #if E04_LIGHT
 		}
 		#endregion // 함수
 	}

@@ -62,7 +62,7 @@ EditorBuildSettings:
       \uBC0F \uC560\uB2C8\uBA54\uC774\uC158).unity"
     guid: fca399e823289f940b011532d84230cd
   - enabled: 1
-    path: Assets/E01/Example/Scenes/E01Example_16 (UGUI).unity
+    path: Assets/E01/Example/Scenes/E01Example_16 (GUI).unity
     guid: f5d0143caadda9445ad97c4819325474
   - enabled: 1
     path: "Assets/E01/Example/Scenes/E01Example_17 (\uB450\uB354\uC9C0 \uC7A1\uAE30
