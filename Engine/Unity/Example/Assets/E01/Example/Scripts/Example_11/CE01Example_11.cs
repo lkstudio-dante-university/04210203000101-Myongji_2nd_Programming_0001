@@ -61,6 +61,9 @@ namespace E01 {
 		[SerializeField] private GameObject m_oPhysics02Target = null;
 		[SerializeField] private GameObject m_oPhysics02ObstacleRoot = null;
 
+		[SerializeField] private List<GameObject> m_oPhysics01RootList = new List<GameObject>();
+		[SerializeField] private List<GameObject> m_oPhysics02RootList = new List<GameObject>();
+
 #if E11_PHYSICS_02
 		private bool m_bIsShoot = false;
 		private float m_fShootPower = 0.0f;
@@ -75,10 +78,19 @@ namespace E01 {
 		/** 초기화 */
 		public override void Awake() {
 			base.Awake();
-			this.UpdateObstaclePhysicsState(false);
+
+			m_oPhysics01RootList.ForEach((a_oGameObj) => a_oGameObj.SetActive(false));
+			m_oPhysics02RootList.ForEach((a_oGameObj) => a_oGameObj.SetActive(false));
+
+#if E11_PHYSICS_01
+			m_oPhysics01RootList.ForEach((a_oGameObj) => a_oGameObj.SetActive(true));
+#elif E11_PHYSICS_02
+			this.SetupObstacleRigidbodyState(false);
+			m_oPhysics02RootList.ForEach((a_oGameObj) => a_oGameObj.SetActive(true));
 
 			var oRigidbody = m_oPhysics02Target.GetComponent<Rigidbody>();
 			oRigidbody.useGravity = false;
+#endif // #if E11_PHYSICS_01
 		}
 
 		/** 상태를 갱신한다 */
@@ -185,7 +197,7 @@ namespace E01 {
 				oRigidbody.AddForceAtPosition(stForce, stForcePos, ForceMode.VelocityChange);
 
 				m_bIsShoot = true;
-				this.UpdateObstaclePhysicsState(true);
+				this.SetupObstacleRigidbodyState(true);
 			}
 #endif // E11_PHYSICS_01
 		}
@@ -197,8 +209,8 @@ namespace E01 {
 #endif // #if E11_PHYSICS_01
 		}
 
-		/** 장애물 물리 상태를 갱신한다 */
-		private void UpdateObstaclePhysicsState(bool a_bIsEnable) {
+		/** 장애물 강체 상태를 설정한다 */
+		private void SetupObstacleRigidbodyState(bool a_bIsEnable) {
 			/*
 			 * Transform 컴포넌트를 활용하면 특정 게임 객체의 자식 게임 객체에 접근하는 것이 가능하다. (즉, Transform
 			 * 컴포넌트에는 게임 객체의 변환에 대한 정보와 더불어 계층적인 관계를 제어 할 수 있는 여러 기능을 지원한다는
@@ -248,6 +260,6 @@ namespace E01 {
 			}
 		}
 #endif // #if UNITY_EDITOR
-		#endregion // 함수
+#endregion // 함수
 	}
 }

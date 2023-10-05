@@ -15,6 +15,16 @@ namespace E01 {
 			base.Awake();
 			Physics.gravity = KE01Define.G_PHYSICS_GRAVITY;
 		}
+
+		/** 상태를 갱신한다 */
+		public override void Update() {
+			base.Update();
+
+			// 백 키를 눌렀을 경우
+			if(Input.GetKeyDown(KeyCode.Escape) && !this.SceneName.Equals(KE01Define.G_SCENE_N_EXAMPLE_00)) {
+				CE01SceneLoader.Inst.LoadScene(KE01Define.G_SCENE_N_EXAMPLE_00);
+			}
+		}
 		#endregion // 함수
 	}
 }
