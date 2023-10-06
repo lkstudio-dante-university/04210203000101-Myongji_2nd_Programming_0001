@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - MainLight
-  - SceneManager
+  - E01MainLight
+  - E01SceneManager
+  - E01Obstacle_13
+  - E01SafeArea_13
   layers:
   - Default
   - TransparentFX

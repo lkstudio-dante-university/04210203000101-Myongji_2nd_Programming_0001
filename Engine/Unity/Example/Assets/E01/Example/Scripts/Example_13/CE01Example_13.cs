@@ -37,6 +37,11 @@ namespace E01 {
 		public override void Awake() {
 			base.Awake();
 			CE01DataStorage_13.Inst.Reset();
+
+			// 전달자를 설정한다
+			var oDispatcher = m_oTarget.GetComponent<CE01TriggerDispatcher>();
+			oDispatcher.SetEnterCallback(this.HandleOnTriggerEnter);
+			oDispatcher.SetExitCallback(this.HandleOnTriggerExit);
 		}
 
 		/** 초기화 */
@@ -75,6 +80,36 @@ namespace E01 {
 
 			for(int i = 0; i < m_oObstacleList.Count; ++i) {
 				m_oObstacleList[i].transform.localPosition += new Vector3(-550.0f * Time.deltaTime, 0.0f, 0.0f);
+			}
+		}
+
+		/** 상태를 갱신한다 */
+		public override void UpdateState() {
+			base.UpdateState();
+			this.UpdateUIsState();
+		}
+
+		/** UI 상태를 갱신한다 */
+		private void UpdateUIsState() {
+			// 텍스트를 갱신한다
+			m_oScoreText.text = $"{CE01DataStorage_13.Inst.Score}";
+		}
+
+		/** 충돌 시작을 처리한다 */
+		private void HandleOnTriggerEnter(CE01TriggerDispatcher a_oSender, Collider a_oCollider) {
+			// 장애물 일 경우
+			if(a_oCollider.CompareTag("E01Obstacle_13")) {
+				m_eState = EState.GAME_OVER;
+				CE01SceneLoader.Inst.LoadScene(KE01Define.G_SCENE_N_EXAMPLE_14);
+			}
+		}
+
+		/** 충돌 종료를 처리한다 */
+		private void HandleOnTriggerExit(CE01TriggerDispatcher a_oSender, Collider a_oCollider) {
+			// 안전 영역 일 경우
+			if(a_oCollider.CompareTag("E01SafeArea_13")) {
+				CE01DataStorage_13.Inst.SetScore(CE01DataStorage_13.Inst.Score + 1);
+				this.SetIsDirtyUpdateState(true);
 			}
 		}
 		#endregion // 함수

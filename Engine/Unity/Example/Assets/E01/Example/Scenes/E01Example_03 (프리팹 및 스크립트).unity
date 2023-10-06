@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 1018217116}
   m_Layer: 0
   m_Name: SceneManager
-  m_TagString: SceneManager
+  m_TagString: E01SceneManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 1267645908}
   m_Layer: 0
   m_Name: MainLight
-  m_TagString: MainLight
+  m_TagString: E01MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

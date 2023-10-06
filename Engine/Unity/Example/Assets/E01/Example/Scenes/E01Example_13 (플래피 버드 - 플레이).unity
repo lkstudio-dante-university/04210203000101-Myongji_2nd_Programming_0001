@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1018217116}
   m_Layer: 0
   m_Name: SceneManager
-  m_TagString: SceneManager
+  m_TagString: E01SceneManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -346,7 +346,7 @@ GameObject:
   - component: {fileID: 1267645908}
   m_Layer: 0
   m_Name: MainLight
-  m_TagString: MainLight
+  m_TagString: E01MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 1743265148}
   - component: {fileID: 1743265147}
   - component: {fileID: 1743265150}
+  - component: {fileID: 1743265151}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -866,6 +867,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 58
   m_CollisionDetection: 3
+--- !u!114 &1743265151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743265145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a6587d7a40708488f3b7a207eebcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1745212947
 GameObject:
   m_ObjectHideFlags: 0

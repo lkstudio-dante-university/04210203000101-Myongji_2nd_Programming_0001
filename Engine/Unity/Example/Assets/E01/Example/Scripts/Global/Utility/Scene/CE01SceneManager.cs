@@ -13,14 +13,16 @@ namespace E01 {
 		/** 초기화 */
 		public override void Awake() {
 			base.Awake();
+
 			Physics.gravity = KE01Define.G_PHYSICS_GRAVITY;
+			Application.targetFrameRate = Mathf.RoundToInt((float)Screen.currentResolution.refreshRateRatio.value);
 		}
 
 		/** 상태를 갱신한다 */
 		public override void Update() {
 			base.Update();
 
-			// 백 키를 눌렀을 경우
+			// 뒤로가기 키를 눌렀을 경우
 			if(Input.GetKeyDown(KeyCode.Escape) && !this.SceneName.Equals(KE01Define.G_SCENE_N_EXAMPLE_00)) {
 				CE01SceneLoader.Inst.LoadScene(KE01Define.G_SCENE_N_EXAMPLE_00);
 			}

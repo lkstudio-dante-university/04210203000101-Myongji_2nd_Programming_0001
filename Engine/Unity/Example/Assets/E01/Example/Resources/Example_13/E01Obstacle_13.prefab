@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3849124067168469540}
   m_Layer: 0
   m_Name: Down
-  m_TagString: Untagged
+  m_TagString: E01Obstacle_13
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 7214484710117597526}
   m_Layer: 0
   m_Name: Up
-  m_TagString: Untagged
+  m_TagString: E01Obstacle_13
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 7381350640728556612}
   m_Layer: 0
   m_Name: SafeArea
-  m_TagString: Untagged
+  m_TagString: E01SafeArea_13
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
