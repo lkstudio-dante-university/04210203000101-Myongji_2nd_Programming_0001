@@ -47,6 +47,11 @@ namespace E01 {
 				this.SetIsDirtySaveInfo(false);
 			}
 
+			/*
+			 * 더티 플래그 패턴이란?
+			 * - 특정 게임 객체의 상태를 갱신하기 위한 구조를 의미한다. (즉, 더티 플래그 패턴을 활용하면 특정 게임 객체의 
+			 * 상태 갱신을 좀 더 효율적으로 처리하는 것이 가능하다.)
+			 */
 			// 상태 갱신이 필요 할 경우
 			if(this.IsDirtyUpdateState) {
 				this.UpdateState();

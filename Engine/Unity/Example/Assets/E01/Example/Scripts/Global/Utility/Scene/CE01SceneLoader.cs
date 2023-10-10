@@ -45,7 +45,7 @@ namespace E01 {
 			do {
 				yield return null;
 				a_oCallback?.Invoke(this, oAsyncOperation, false);
-			} while(oAsyncOperation.isDone);
+			} while(!oAsyncOperation.isDone);
 
 			a_oCallback?.Invoke(this, oAsyncOperation, true);
 		}

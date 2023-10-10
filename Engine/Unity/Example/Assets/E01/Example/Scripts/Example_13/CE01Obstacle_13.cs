@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Note:
+ * - 이벤트 함수 설명
+ * - 장애물 스크립트 보완
+ */
 namespace E01 {
 	/** 장애물 */
 	public partial class CE01Obstacle_13 : CE01Component {

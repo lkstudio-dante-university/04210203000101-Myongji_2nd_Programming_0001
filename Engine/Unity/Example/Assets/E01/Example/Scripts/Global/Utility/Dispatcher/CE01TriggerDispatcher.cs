@@ -6,19 +6,6 @@ namespace E01 {
 	/** 충돌 전달자 */
 	public partial class CE01TriggerDispatcher : CE01Component {
 		#region 프로퍼티
-		/*
-		 * Func 및 Action 델리게이트는 메서드를 저장 및 제어 할 수 있는 기능을 지원한다. (즉, 델리게이트를 활용하면 특정
-		 * 메서드를 저장 및 호출하는 것이 가능하다.)
-		 * 
-		 * 따라서, 델리게이트를 활용하면 메서드를 데이터처럼 취급하는 것이 가능하며 델리게이트를 통해 특정 메서드를 간접적으로
-		 * 호출하는 것이 가능하다.
-		 * 
-		 * Func 델리게이트란?
-		 * - 반환 값이 존재하는 메서드를 제어 할 수 있는 델리게이트를 의미한다.
-		 * 
-		 * Action 델릭게이트란?
-		 * - 반환 값이 존재하지 않는 메서드를 제어 할 수 있는 델리게이트를 의미한다.
-		 */
 		public System.Action<CE01TriggerDispatcher, Collider> EnterCallback { get; private set; } = null;
 		public System.Action<CE01TriggerDispatcher, Collider> StayCallback { get; private set; } = null;
 		public System.Action<CE01TriggerDispatcher, Collider> ExitCallback { get; private set; } = null;
