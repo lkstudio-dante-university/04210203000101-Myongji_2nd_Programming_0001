@@ -21,22 +21,22 @@ namespace E01 {
 		public static readonly Vector3 G_PHYSICS_GRAVITY = new Vector3(0.0f, -1960.0f, 0.0f);
 
 		// 씬 이름
-		public const string G_SCENE_N_EXAMPLE_00 = "E01Example_00 (메뉴)";
-		public const string G_SCENE_N_EXAMPLE_01 = "E01Example_01 (기초)";
-		public const string G_SCENE_N_EXAMPLE_02 = "E01Example_02 (카메라)";
-		public const string G_SCENE_N_EXAMPLE_03 = "E01Example_03 (프리팹 및 스크립트)";
-		public const string G_SCENE_N_EXAMPLE_04 = "E01Example_04 (광원 및 재질)";
-		public const string G_SCENE_N_EXAMPLE_05 = "E01Example_05 (C# 기초 - 자료형 및 변수)";
-		public const string G_SCENE_N_EXAMPLE_06 = "E01Example_06 (C# 기초 - 컬렉션)";
-		public const string G_SCENE_N_EXAMPLE_07 = "E01Example_07 (C# 기초 - 클래스)";
-		public const string G_SCENE_N_EXAMPLE_08 = "E01Example_08 (C# 기초 - 상속 및 다형성)";
-		public const string G_SCENE_N_EXAMPLE_09 = "E01Example_09 (C# 기초 - 가상 메서드)";
-		public const string G_SCENE_N_EXAMPLE_10 = "E01Example_10 (C# 기초 - 사용자 정의 자료형)";
-		public const string G_SCENE_N_EXAMPLE_11 = "E01Example_11 (물리)";
-		public const string G_SCENE_N_EXAMPLE_12 = "E01Example_12 (플래피 버드 - 시작)";
-		public const string G_SCENE_N_EXAMPLE_13 = "E01Example_13 (플래피 버드 - 플레이)";
-		public const string G_SCENE_N_EXAMPLE_14 = "E01Example_14 (플래피 버드 - 결과)";
-		public const string G_SCENE_N_EXAMPLE_15 = "E01Example_15 (스프라이트 및 애니메이션)";
+		public const string G_SCENE_N_EXAMPLE_00 = "E01Example_00 (Etc)";
+		public const string G_SCENE_N_EXAMPLE_01 = "E01Example_01 (Basic)";
+		public const string G_SCENE_N_EXAMPLE_02 = "E01Example_02 (Camera)";
+		public const string G_SCENE_N_EXAMPLE_03 = "E01Example_03 (Prefab, Script)";
+		public const string G_SCENE_N_EXAMPLE_04 = "E01Example_04 (Light, Material)";
+		public const string G_SCENE_N_EXAMPLE_05 = "E01Example_05 (C# Basic - Data Type, Variable)";
+		public const string G_SCENE_N_EXAMPLE_06 = "E01Example_06 (C# Basic - Collection)";
+		public const string G_SCENE_N_EXAMPLE_07 = "E01Example_07 (C# Basic - Class)";
+		public const string G_SCENE_N_EXAMPLE_08 = "E01Example_08 (C# Basic - Inheritance, Polymorphism)";
+		public const string G_SCENE_N_EXAMPLE_09 = "E01Example_09 (C# Basic - Virtual Method)";
+		public const string G_SCENE_N_EXAMPLE_10 = "E01Example_10 (C# Basic - User Define Data Type)";
+		public const string G_SCENE_N_EXAMPLE_11 = "E01Example_11 (Physics)";
+		public const string G_SCENE_N_EXAMPLE_12 = "E01Example_12 (Flappy Bird - Title)";
+		public const string G_SCENE_N_EXAMPLE_13 = "E01Example_13 (Flappy Bird - Play)";
+		public const string G_SCENE_N_EXAMPLE_14 = "E01Example_14 (Flappy Bird - Result)";
+		public const string G_SCENE_N_EXAMPLE_15 = "E01Example_15 (Sprite, Animation)";
 		public const string G_SCENE_N_EXAMPLE_16 = "E01Example_16 (GUI)";
 		#endregion // 기본
 	}
