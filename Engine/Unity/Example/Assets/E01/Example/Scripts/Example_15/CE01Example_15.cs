@@ -14,7 +14,7 @@ namespace E01 {
 	/** Example 15 */
 	public partial class CE01Example_15 : CE01SceneManager {
 		#region 변수
-
+		[SerializeField] private SpriteRenderer m_oSprite = null;
 		#endregion // 변수
 
 		#region 프로퍼티
