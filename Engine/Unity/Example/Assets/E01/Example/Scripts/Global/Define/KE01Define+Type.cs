@@ -4,6 +4,15 @@ using UnityEngine;
 
 namespace E01 {
 	#region 기본
+	/** 마우스 버튼 */
+	public enum EMouseBtn {
+		NONE = -1,
+		LEFT,
+		RIGHT,
+		MIDDLE,
+		[HideInInspector] MAX_VAL
+	}
+
 	/** 투영 */
 	public enum EProjection {
 		NONE = -1,

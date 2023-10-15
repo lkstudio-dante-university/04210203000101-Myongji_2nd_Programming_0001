@@ -100,6 +100,8 @@ namespace E01 {
 			// 장애물 일 경우
 			if(a_oCollider.CompareTag("E01Obstacle_13")) {
 				m_eState = EState.GAME_OVER;
+				m_oTarget.GetComponent<Rigidbody>().useGravity = false;
+
 				CE01SceneLoader.Inst.LoadScene(KE01Define.G_SCENE_N_EXAMPLE_14);
 			}
 		}

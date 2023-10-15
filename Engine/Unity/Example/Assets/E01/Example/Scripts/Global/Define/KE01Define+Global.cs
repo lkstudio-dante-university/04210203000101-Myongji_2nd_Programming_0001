@@ -38,6 +38,8 @@ namespace E01 {
 		public const string G_SCENE_N_EXAMPLE_14 = "E01Example_14 (Flappy Bird - Result)";
 		public const string G_SCENE_N_EXAMPLE_15 = "E01Example_15 (Sprite, Animation)";
 		public const string G_SCENE_N_EXAMPLE_16 = "E01Example_16 (GUI)";
+		public const string G_SCENE_N_EXAMPLE_20 = "E01Example_20 (Navigation Mesh)";
+		public const string G_SCENE_N_EXAMPLE_21 = "E01Example_21 (Shader)";
 		#endregion // 기본
 	}
 }

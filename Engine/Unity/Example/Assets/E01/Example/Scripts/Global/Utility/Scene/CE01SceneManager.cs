@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace E01 {
@@ -8,6 +9,9 @@ namespace E01 {
 	public abstract partial class CE01SceneManager : CE01Component {
 		#region 프로퍼티
 		public abstract string SceneName { get; }
+
+		public Camera MainCamera { get; private set; } = null;
+		public EventSystem UIsEventSystem { get; private set; } = null;
 
 		public GameObject UIs { get; private set; } = null;
 		public GameObject PopupUIs { get; private set; } = null;
@@ -55,11 +59,17 @@ namespace E01 {
 				var oObjs = oGameObjList[i].transform.Find("Objs")?.gameObject;
 				var oStaticObjs = oGameObjList[i].transform.Find("StaticObjs")?.gameObject;
 
+				var oMainCamera = oGameObjList[i].transform.Find("MainCamera");
+				var oUIsEventSystem = oGameObjList[i].transform.Find("EventSystem");
+
 				this.UIs = this.UIs ?? oUIs;
 				this.PopupUIs = this.PopupUIs ?? oPopupUIs;
 
 				this.Objs = this.Objs ?? oObjs;
 				this.StaticObjs = this.StaticObjs ?? oStaticObjs;
+
+				this.MainCamera = this.MainCamera ?? oMainCamera?.GetComponent<Camera>();
+				this.UIsEventSystem = this.UIsEventSystem ?? oUIsEventSystem?.GetComponent<EventSystem>();
 			}
 		}
 		#endregion // 함수
