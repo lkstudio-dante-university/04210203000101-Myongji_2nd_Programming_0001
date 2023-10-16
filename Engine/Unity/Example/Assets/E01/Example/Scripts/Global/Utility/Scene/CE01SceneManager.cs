@@ -19,6 +19,14 @@ namespace E01 {
 		public GameObject Objs { get; private set; } = null;
 		public GameObject StaticObjs { get; private set; } = null;
 
+		/*
+		 * 액티브 씬이란?
+		 * - 기본 씬을 의미한다. (즉, Unity 가 제공하는 몇몇 메서드는 액티브 씬을 대상으로 동작하기 때문에 현재 액티브 씬에
+		 * 따라 메서드 호출 결과가 달라질 수 있다.)
+		 * 
+		 * 일반적으로 액티브 씬은 현재 로드 된 씬 중에 가장 먼저 로드 된 씬을 의미한다. (즉, 특정 씬을 Single 모드로
+		 * 로드했을 경우 해당 씬이 액티브 씬이 된다는 것을 알 수 있다.)
+		 */
 		public bool IsActiveScene => SceneManager.GetActiveScene().name.Equals(this.SceneName);
 		public bool IsAdditiveScene => !this.IsActiveScene;
 		#endregion // 프로퍼티
@@ -71,6 +79,9 @@ namespace E01 {
 				this.MainCamera = this.MainCamera ?? oMainCamera?.GetComponent<Camera>();
 				this.UIsEventSystem = this.UIsEventSystem ?? oUIsEventSystem?.GetComponent<EventSystem>();
 			}
+
+			this.MainCamera?.gameObject.SetActive(this.IsActiveScene);
+			this.UIsEventSystem?.gameObject.SetActive(this.IsActiveScene);
 		}
 		#endregion // 함수
 	}

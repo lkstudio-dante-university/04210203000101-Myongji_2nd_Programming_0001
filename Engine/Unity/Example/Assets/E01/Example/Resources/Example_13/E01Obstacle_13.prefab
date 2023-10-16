@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3fa11fbb6a526c42a7a554f9c4c0c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_oSafeArea: {fileID: 7288819750809355524}
-  m_oUpObstacle: {fileID: 4968493010029268269}
-  m_oDownObstacle: {fileID: 9019496681461430182}
+  m_oSafeArea: {fileID: 9019496681461430182}
+  m_oUpObstacle: {fileID: 7288819750809355524}
+  m_oDownObstacle: {fileID: 4968493010029268269}
 --- !u!1 &7288819750809355524
 GameObject:
   m_ObjectHideFlags: 0

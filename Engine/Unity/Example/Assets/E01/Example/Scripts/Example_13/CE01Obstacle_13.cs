@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Note:
- * - 이벤트 함수 설명
- * - 장애물 스크립트 보완
- */
 namespace E01 {
 	/** 장애물 */
 	public partial class CE01Obstacle_13 : CE01Component {
@@ -20,6 +15,35 @@ namespace E01 {
 		/** 초기화 */
 		public override void Awake() {
 			base.Awake();
+
+			float fSafeAreaPercent = 0.35f;
+			float fObstaclePercent = 1.0f - fSafeAreaPercent;
+
+			float fUpObstaclePercent = Random.Range(0.1f, 0.9f);
+			float fDownObstaclePercent = 1.0f - fUpObstaclePercent;
+
+			var stSafeAreaScale = m_oSafeArea.transform.localScale;
+			stSafeAreaScale.y = KE01Define.G_DESIGN_SCREEN_HEIGHT * fSafeAreaPercent;
+
+			var stUpObstacleScale = m_oUpObstacle.transform.localScale;
+			stUpObstacleScale.y = KE01Define.G_DESIGN_SCREEN_HEIGHT * (fObstaclePercent * fUpObstaclePercent);
+
+			var stDownObstacleScale = m_oDownObstacle.transform.localScale;
+			stDownObstacleScale.y = KE01Define.G_DESIGN_SCREEN_HEIGHT * (fObstaclePercent * fDownObstaclePercent);
+
+			var stUpObstaclePos = m_oUpObstacle.transform.localPosition;
+			stUpObstaclePos.y = (KE01Define.G_DESIGN_SCREEN_HEIGHT / 2.0f) - (stUpObstacleScale.y / 2.0f);
+
+			var stDownObstaclePos = m_oDownObstacle.transform.localPosition;
+			stDownObstaclePos.y = (KE01Define.G_DESIGN_SCREEN_HEIGHT / -2.0f) + (stDownObstacleScale.y / 2.0f);
+
+			m_oSafeArea.transform.localScale = stSafeAreaScale;
+
+			m_oUpObstacle.transform.localScale = stUpObstacleScale;
+			m_oUpObstacle.transform.localPosition = stUpObstaclePos;
+
+			m_oDownObstacle.transform.localScale = stDownObstacleScale;
+			m_oDownObstacle.transform.localPosition = stDownObstaclePos;
 		}
 		#endregion // 함수
 	}

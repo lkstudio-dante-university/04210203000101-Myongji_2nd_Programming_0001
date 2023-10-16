@@ -38,6 +38,9 @@ namespace E01 {
 		public const string G_SCENE_N_EXAMPLE_14 = "E01Example_14 (Flappy Bird - Result)";
 		public const string G_SCENE_N_EXAMPLE_15 = "E01Example_15 (Sprite, Animation)";
 		public const string G_SCENE_N_EXAMPLE_16 = "E01Example_16 (GUI)";
+		public const string G_SCENE_N_EXAMPLE_17 = "E01Example_17 (Moly Moly - Start)";
+		public const string G_SCENE_N_EXAMPLE_18 = "E01Example_18 (Moly Moly - Play)";
+		public const string G_SCENE_N_EXAMPLE_19 = "E01Example_19 (Moly Moly - Result)";
 		public const string G_SCENE_N_EXAMPLE_20 = "E01Example_20 (Navigation Mesh)";
 		public const string G_SCENE_N_EXAMPLE_21 = "E01Example_21 (Shader)";
 		#endregion // 기본

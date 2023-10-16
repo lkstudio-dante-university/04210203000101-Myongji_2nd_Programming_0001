@@ -23,12 +23,23 @@ namespace E01 {
 		public override void Awake() {
 			base.Awake();
 
+			/*
+			 * SceneManager 클래스를 이용하면 현재 빌드 설정에 등록 된 씬 개수를 가져오는 것이 가능하다.
+			 */
 			for(int i = 1; i < SceneManager.sceneCountInBuildSettings; ++i) {
+				/*
+				 * SceneUtility 클래스는 씬과 관련 된 기능을 지원한다.
+				 */
 				string oScenePath = SceneUtility.GetScenePathByBuildIndex(i);
 
 				var oText = Instantiate(m_oOriginText, Vector3.zero, Quaternion.identity);
 				oText.transform.SetParent(m_oScrollViewContents.transform, false);
 
+				/*
+				 * Path 클래스란?
+				 * - 경로와 관련 된 여러가지 기능을 제공하는 클래스를 의미한다. (즉, 해당 클래스를 활용하면 특정 파일의
+				 * 경로를 계산하는 등의 연산을 수행하는 것이 가능하다.)
+				 */
 				oText.GetComponent<Text>().text = Path.GetFileNameWithoutExtension(oScenePath);
 				oText.GetComponent<Button>().onClick.AddListener(() => this.OnTouchText(oScenePath));
 			}
