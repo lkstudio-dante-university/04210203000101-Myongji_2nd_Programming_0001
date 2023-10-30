@@ -5,6 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/*
+ * 기말 프로젝트 필수 기능
+ * - 사운드
+ * - 쉐이더
+ * - 저장 및 로드 (PlayerPrefs or File Stream)
+ * - 멀티 해상도 대응 (Expand or Shrink)
+ */
 namespace E01 {
 	/** 메뉴 씬 */
 	public partial class CE01Example_00 : CE01SceneManager {
