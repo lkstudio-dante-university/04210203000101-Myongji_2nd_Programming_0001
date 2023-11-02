@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace E01 {
-	/** 애니메이션 이벤트 전달자 */
-	public partial class CE01AniEventDispatcher : StateMachineBehaviour {
+	/** 애니메이션 상태 전달자 */
+	public partial class CE01AniStateDispatcher : StateMachineBehaviour {
 		#region 프로퍼티
-		public System.Action<CE01AniEventDispatcher, Animator, AnimatorStateInfo, int> AniStateEnterCallback { get; private set; } = null;
-		public System.Action<CE01AniEventDispatcher, Animator, AnimatorStateInfo, int> AniStateExitCallback { get; private set; } = null;
+		public System.Action<CE01AniStateDispatcher, Animator, AnimatorStateInfo, int> AniStateEnterCallback { get; private set; } = null;
+		public System.Action<CE01AniStateDispatcher, Animator, AnimatorStateInfo, int> AniStateExitCallback { get; private set; } = null;
 		#endregion // 프로퍼티
 
 		#region 함수
@@ -26,12 +26,12 @@ namespace E01 {
 
 		#region 접근 함수
 		/** 애니메이션 상태 시작 콜백을 변경한다 */
-		public void SetAniStateEnterCallback(System.Action<CE01AniEventDispatcher, Animator, AnimatorStateInfo, int> a_oCallback) {
+		public void SetAniStateEnterCallback(System.Action<CE01AniStateDispatcher, Animator, AnimatorStateInfo, int> a_oCallback) {
 			this.AniStateEnterCallback = a_oCallback;
 		}
 
 		/** 애니메이션 상태 종료 콜백을 변경한다 */
-		public void SetAniStateExitCallback(System.Action<CE01AniEventDispatcher, Animator, AnimatorStateInfo, int> a_oCallback) {
+		public void SetAniStateExitCallback(System.Action<CE01AniStateDispatcher, Animator, AnimatorStateInfo, int> a_oCallback) {
 			this.AniStateExitCallback = a_oCallback;
 		}
 		#endregion // 접근 함수

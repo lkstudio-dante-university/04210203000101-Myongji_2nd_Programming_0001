@@ -52,7 +52,7 @@ namespace E01 {
 		}
 
 		/** 애니메이션이 종료 상태를 처리한다 */
-		private void HandleOnAniStateExit(CE01AniEventDispatcher a_oSender, Animator a_oAnimator, AnimatorStateInfo a_stStateInfo, int a_nLayerIdx) {
+		private void HandleOnAniStateExit(CE01AniStateDispatcher a_oSender, Animator a_oAnimator, AnimatorStateInfo a_stStateInfo, int a_nLayerIdx) {
 			StartCoroutine(this.TryOpen());
 		}
 
@@ -67,7 +67,7 @@ namespace E01 {
 			m_oAnimator.SetTrigger("Open");
 			m_oAnimator.ResetTrigger("Catch");
 
-			var oAniEventDispatchers = m_oAnimator.GetBehaviours<CE01AniEventDispatcher>();
+			var oAniEventDispatchers = m_oAnimator.GetBehaviours<CE01AniStateDispatcher>();
 
 			for(int i = 0; i < oAniEventDispatchers.Length; ++i) {
 				oAniEventDispatchers[i].SetAniStateExitCallback(this.HandleOnAniStateExit);

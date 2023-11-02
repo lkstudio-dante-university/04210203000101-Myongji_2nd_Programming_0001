@@ -3,7 +3,7 @@
 
 #if E15_ANIMATION
 //#define E15_ANIMATION_TWEEN
-#define E15_ANIMATION_KEY_FRAME
+#define E15_ANIMATION_KEYFRAME
 #endif // #if E15_ANIMATION
 
 using System.Collections;
@@ -67,18 +67,19 @@ namespace E01 {
 	public partial class CE01Example_15 : CE01SceneManager {
 		#region 변수
 		[SerializeField] private SpriteRenderer m_oSprite = null;
+		[SerializeField] private SpriteRenderer m_oAniKeyframeSprite = null;
 
 		[Header("=====> Game Objects <=====")]
 		[SerializeField] private GameObject m_oSpriteRoot = null;
-		[SerializeField] private GameObject m_oAnimationTweenRoot = null;
-		[SerializeField] private GameObject m_oAnimationKeyFrameRoot = null;
+		[SerializeField] private GameObject m_oAniTweenRoot = null;
+		[SerializeField] private GameObject m_oAniKeyframeRoot = null;
 
-		[SerializeField] private GameObject m_oAnimationTweenTarget01 = null;
-		[SerializeField] private GameObject m_oAnimationTweenTarget02 = null;
+		[SerializeField] private GameObject m_oAniTweenTarget01 = null;
+		[SerializeField] private GameObject m_oAniTweenTarget02 = null;
 
 #if E15_ANIMATION
-		private Vector3 m_stAnimationTweenTarget01Pos = Vector3.zero;
-		private Vector3 m_stAnimationTweenTarget02Pos = Vector3.zero;
+		private Vector3 m_stAniTweenTarget01Pos = Vector3.zero;
+		private Vector3 m_stAniTweenTarget02Pos = Vector3.zero;
 
 		private Tween m_oTweenAni01 = null;
 		private Tween m_oTweenAni02 = null;
@@ -95,20 +96,23 @@ namespace E01 {
 			base.Awake();
 
 			m_oSpriteRoot.SetActive(false);
-			m_oAnimationTweenRoot.SetActive(false);
-			m_oAnimationKeyFrameRoot.SetActive(false);
+			m_oAniTweenRoot.SetActive(false);
+			m_oAniKeyframeRoot.SetActive(false);
 
 #if E15_SPRITE
 			m_oSpriteRoot.SetActive(true);
 #elif E15_ANIMATION_TWEEN
-			m_oAnimationTweenRoot.SetActive(true);
-#elif E15_ANIMATION_KEY_FRAME
-			m_oAnimationKeyFrameRoot.SetActive(true);
-#endif // #if E15_ANIMATION_KEY_FRAME
+			m_oAniTweenRoot.SetActive(true);
+#elif E15_ANIMATION_KEYFRAME
+			m_oAniKeyframeRoot.SetActive(true);
+#endif // #if E15_ANIMATION_KEYFRAME
 
 #if E15_ANIMATION
-			m_stAnimationTweenTarget01Pos = m_oAnimationTweenTarget01.transform.localPosition;
-			m_stAnimationTweenTarget02Pos = m_oAnimationTweenTarget02.transform.localPosition;
+			m_stAniTweenTarget01Pos = m_oAniTweenTarget01.transform.localPosition;
+			m_stAniTweenTarget02Pos = m_oAniTweenTarget02.transform.localPosition;
+
+			var oEventDispatcher = m_oAniKeyframeSprite.GetComponent<CE01EventDispatcher>();
+			oEventDispatcher.SetAniEventCallback(this.HandleOnAniEvent);
 #endif // #if E15_ANIMATION
 		}
 
@@ -143,11 +147,11 @@ namespace E01 {
 				m_oTweenAni01?.Kill();
 				m_oTweenAni02?.Kill();
 
-				m_oAnimationTweenTarget01.transform.localPosition = m_stAnimationTweenTarget01Pos;
-				m_oAnimationTweenTarget01.transform.localEulerAngles = Vector3.zero;
+				m_oAniTweenTarget01.transform.localPosition = m_stAniTweenTarget01Pos;
+				m_oAniTweenTarget01.transform.localEulerAngles = Vector3.zero;
 
-				m_oAnimationTweenTarget02.transform.localPosition = m_stAnimationTweenTarget02Pos;
-				m_oAnimationTweenTarget02.transform.localEulerAngles = Vector3.zero;
+				m_oAniTweenTarget02.transform.localPosition = m_stAniTweenTarget02Pos;
+				m_oAniTweenTarget02.transform.localEulerAngles = Vector3.zero;
 
 				/*
 				 * Sequence 는 여러 트윈 애니메이션을 동시에 실행하는 역할을 수행한다. (즉, Sequence 를 활용하면 여러
@@ -157,17 +161,22 @@ namespace E01 {
 				 * 애니메이션을 동시에 실행하고 Append 메서드는 여러 애니메이션을 차례대로 실행한다는 것을 알 수 있다.)
 				 */
 				var oSequence01 = DOTween.Sequence().SetAutoKill();
-				oSequence01.Join(m_oAnimationTweenTarget01.transform.DORotate(Vector3.up * 360.0f, 2.0f, RotateMode.LocalAxisAdd));
-				oSequence01.Join(m_oAnimationTweenTarget01.transform.DOLocalMoveX(m_stAnimationTweenTarget01Pos.x + 300.0f, 2.0f));
+				oSequence01.Join(m_oAniTweenTarget01.transform.DORotate(Vector3.up * 360.0f, 2.0f, RotateMode.LocalAxisAdd));
+				oSequence01.Join(m_oAniTweenTarget01.transform.DOLocalMoveX(m_stAniTweenTarget01Pos.x + 300.0f, 2.0f));
 
 				var oSequence02 = DOTween.Sequence().SetAutoKill();
-				oSequence02.Append(m_oAnimationTweenTarget02.transform.DORotate(Vector3.up * 360.0f, 2.0f, RotateMode.LocalAxisAdd));
-				oSequence02.Append(m_oAnimationTweenTarget02.transform.DOLocalMoveX(m_stAnimationTweenTarget02Pos.x + 300.0f, 2.0f));
+				oSequence02.Append(m_oAniTweenTarget02.transform.DORotate(Vector3.up * 360.0f, 2.0f, RotateMode.LocalAxisAdd));
+				oSequence02.Append(m_oAniTweenTarget02.transform.DOLocalMoveX(m_stAniTweenTarget02Pos.x + 300.0f, 2.0f));
 
 				m_oTweenAni01 = oSequence01;
 				m_oTweenAni02 = oSequence02;
 			}
 #endif // #if E15_SPRITE
+		}
+
+		/** 애니메이션 이벤트를 처리한다 */
+		private void HandleOnAniEvent(CE01EventDispatcher a_oSender, string a_oParams) {
+			Debug.Log($"HandleOnAniEvent: {a_oParams}");
 		}
 		#endregion // 함수
 	}
