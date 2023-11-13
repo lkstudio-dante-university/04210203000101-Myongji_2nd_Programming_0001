@@ -26,12 +26,16 @@ namespace E01 {
 
 		#region 접근 함수
 		/** 애니메이션 상태 시작 콜백을 변경한다 */
-		public void SetAniStateEnterCallback(System.Action<CE01AniStateDispatcher, Animator, AnimatorStateInfo, int> a_oCallback) {
+		public void SetAniStateEnterCallback(
+			System.Action<CE01AniStateDispatcher, Animator, AnimatorStateInfo, int> a_oCallback) {
+
 			this.AniStateEnterCallback = a_oCallback;
 		}
 
 		/** 애니메이션 상태 종료 콜백을 변경한다 */
-		public void SetAniStateExitCallback(System.Action<CE01AniStateDispatcher, Animator, AnimatorStateInfo, int> a_oCallback) {
+		public void SetAniStateExitCallback(
+			System.Action<CE01AniStateDispatcher, Animator, AnimatorStateInfo, int> a_oCallback) {
+
 			this.AniStateExitCallback = a_oCallback;
 		}
 		#endregion // 접근 함수

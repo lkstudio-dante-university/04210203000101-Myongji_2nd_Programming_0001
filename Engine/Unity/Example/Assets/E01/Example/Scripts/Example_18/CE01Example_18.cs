@@ -31,6 +31,7 @@ namespace E01 {
 		/** 초기화 */
 		public override void Awake() {
 			base.Awake();
+			CE01DataStorage_18.Inst.Reset();
 		}
 
 		/** 상태를 갱신한다 */
@@ -79,7 +80,7 @@ namespace E01 {
 			/*
 			 * Camera 컴포넌트의 ScreenPointToRay 메서드를 활용하면 화면 좌표를 기반으로 Unity 씬 상에 배치 된 물체를
 			 * 검출하기 위한 광선을 계산하는 것이 가능하다. (즉, 해당 메서드를 활용하면 마우스가 클릭 된 시점에 클릭 된
-			 * 물체를 계산하는 것이 가능하다.)
+			 * 물체를 판별하는 것이 가능하다.)
 			 */
 			var stRay = this.MainCamera.ScreenPointToRay(Input.mousePosition);
 			bool bIsHit = Physics.Raycast(stRay, out RaycastHit stRaycastHit);

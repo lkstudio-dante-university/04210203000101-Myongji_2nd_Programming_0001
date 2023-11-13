@@ -24,6 +24,11 @@ namespace E01 {
 			get {
 				// 인스턴스가 없을 경우
 				if(CE01Singleton<T>.m_tInst == null) {
+					/*
+					 * new 키워드를 활용하면 Unity 씬 상에 게임 객체를 생성하는 것이 가능하다. 단, 해당 방법을 통해 게임
+					 * 객체를 생성 할 경우 생성 된 게임 객체가 동작하기 위해서 필요한 컴포넌트를 수동으로 설정해줘야하기
+					 * 때문에 특별한 경우가 아니라면 해당 방법을 통한 게임 객체 생성은 추천하지 않는다.
+					 */
 					var oGameObj = new GameObject(typeof(T).ToString());
 
 					/*
@@ -34,7 +39,7 @@ namespace E01 {
 					 * 방지하기 위해서는 컴포넌트를 추가하기 전에 추가하기 위한 컴포넌트가 이미 존재하는지 검사 할 필요가
 					 * 있다.)
 					 */
-					CE01Singleton<T>.m_tInst = oGameObj.AddComponent<T>();
+					oGameObj.AddComponent<T>();
 				}
 
 				return CE01Singleton<T>.m_tInst;
