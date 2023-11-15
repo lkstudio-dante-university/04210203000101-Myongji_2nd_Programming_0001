@@ -7,7 +7,7 @@ Shader "Example_21/E01SurfaceShader_21_01" {
 	* Properties 영역은 쉐이더 동작하기 위해서 필요한 다양한 옵션을 명시하는 영역을 의미한다.
 	* (즉, 해당 영역에 명시 된 옵션은 유니티 에디터 상에 손쉽게 설정하는 것이 가능하다.)
 	*/
-	Properties{
+	Properties {
 		_Color("Color", Color) = (1, 1, 1, 1)
 	}
 
@@ -16,12 +16,12 @@ Shader "Example_21/E01SurfaceShader_21_01" {
 	* 언어를 통해서 명령문을 작성하면 해당 명령문은 GPU 상에서 구동되는 프로그램이 된다는 것을
 	* 알 수 있다.)
 	*/
-	SubShader{
+	SubShader {
 		/*
 		* Tags 영역은 쉐이더 동작하기 위해서 필요한 부가적인 옵션을 명시하는 영역을 의미한다.
 		* (즉, 해당 영역에 설정되는 옵션에 따라 쉐이더가 처리되는 순서 등을 제어하는 것이 가능하다.)
 		*/
-		Tags{
+		Tags {
 			"Queue" = "Geometry+1"
 			"RenderType" = "Opaque"
 		}

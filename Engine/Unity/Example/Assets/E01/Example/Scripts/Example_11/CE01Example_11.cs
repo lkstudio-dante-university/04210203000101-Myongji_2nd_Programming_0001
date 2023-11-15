@@ -250,7 +250,7 @@ namespace E01 {
 			try {
 #if E11_PHYSICS_01
 				var stEndPos = m_oPhysics01Target.transform.position;
-				stEndPos += m_oPhysics01Target.transform.forward * 500.0f;
+				stEndPos += m_oPhysics01Target.transform.forward * 250.0f;
 
 				Gizmos.color = Color.red;
 				Gizmos.DrawLine(m_oPhysics01Target.transform.position, stEndPos);
@@ -260,6 +260,6 @@ namespace E01 {
 			}
 		}
 #endif // #if UNITY_EDITOR
-#endregion // 함수
+		#endregion // 함수
 	}
 }

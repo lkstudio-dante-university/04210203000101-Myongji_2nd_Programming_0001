@@ -1,5 +1,5 @@
 Shader "Example_21/E01SurfaceShader_21_08" {
-	Properties{
+	Properties {
 		_Cutout("Cutout", Range(0.0, 1.0)) = 0
 
 		_Color("Color", Color) = (1, 1, 1, 1)
@@ -12,7 +12,8 @@ Shader "Example_21/E01SurfaceShader_21_08" {
 		_NormalTex("Normal Texture", 2D) = "bump" { }
 		_SpecularTex("Specular Texture", 2D) = "white" { }
 	}
-	SubShader{
+
+	SubShader {
 		Tags {
 			"Queue" = "Transparent+1"
 			"RenderType" = "Transparent"
@@ -72,7 +73,9 @@ Shader "Example_21/E01SurfaceShader_21_08" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(
+			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+	
 			float3 stHalf = normalize(a_stLightDirection + a_stViewDirection);
 
 			float fDot = saturate(dot(a_stOutput.Normal, a_stLightDirection));

@@ -52,6 +52,23 @@ namespace E01 {
 				oNavMeshAgent.SetDestination(stRaycastHit.point);
 			}
 		}
+
+#if UNITY_EDITOR
+		/** 기즈모를 그린다 */
+		public void OnDrawGizmos() {
+			var stPrevColor = Gizmos.color;
+
+			try {
+				var stEndPos = m_oTarget.transform.position;
+				stEndPos += m_oTarget.transform.forward * 250.0f;
+
+				Gizmos.color = Color.red;
+				Gizmos.DrawLine(m_oTarget.transform.position, stEndPos);
+			} finally {
+				Gizmos.color = stPrevColor;
+			}
+		}
+#endif // #if UNITY_EDITOR
 		#endregion // 함수
 	}
 }

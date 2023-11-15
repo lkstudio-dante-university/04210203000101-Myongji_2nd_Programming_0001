@@ -96,7 +96,7 @@ namespace E01 {
 			 * 해줘야한다. (즉, Set 계열 메서드를 통해서 특정 매개 변수의 값을 변경하는 것은 현재 설정 된 애니메이션 
 			 * 컨트롤러를 대상으로 수행된다는 것을 알 수 있다.)
 			 */
-			m_oAnimator.runtimeAnimatorController = 
+			m_oAnimator.runtimeAnimatorController =
 				(this.TargetType <= ETargetType.A) ? m_oAniController01 : m_oAniController02;
 
 			/*

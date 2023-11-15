@@ -1,12 +1,13 @@
 Shader "Example_21/E01SurfaceShader_21_03" {
-	Properties{
+	Properties {
 		_Color("Color", Color) = (1, 1, 1, 1)
 		_FresnelColor("Fresnel Color", Color) = (1, 1, 1, 1)
 		_SpecularColor("Specular Color", Color) = (1, 1, 1, 1)
 
 		_MainTex("Main Texture", 2D) = "white" { }
 	}
-	SubShader{
+
+	SubShader {
 		Tags {
 			"Queue" = "Geometry+1"
 			"RenderType" = "Opaque"
@@ -22,7 +23,7 @@ Shader "Example_21/E01SurfaceShader_21_03" {
 
 		sampler2D _MainTex;
 
-		/** 입력 */
+				/** 입력 */
 		struct Input {
 			float4 color;
 			float3 worldNormal;
@@ -46,7 +47,7 @@ Shader "Example_21/E01SurfaceShader_21_03" {
 			float3 Emission;
 		};
 
-		/** 서피스 쉐이더 */
+				/** 서피스 쉐이더 */
 		void SSMain(Input a_stInput, inout SurfaceOutputCustom a_stOutput) {
 			float4 stColor = tex2D(_MainTex, a_stInput.uv_MainTex);
 
@@ -55,8 +56,9 @@ Shader "Example_21/E01SurfaceShader_21_03" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(SurfaceOutputCustom a_stOutput, 
-			float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(
+			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+	
 			float3 stHalf = normalize(a_stLightDirection + a_stViewDirection);
 
 			float fDot = saturate(dot(a_stOutput.Normal, a_stLightDirection));

@@ -26,7 +26,7 @@ namespace E01 {
 		public void ShowInfo() {
 			Debug.Log("부모 클래스 ShowInfo 메서드 호출");
 		}
-		
+
 		/** 정보를 출력한다 */
 		public virtual void ShowInfoVirtual() {
 			Debug.Log("부모 클래스 ShowInfoVirtual 메서드 호출");

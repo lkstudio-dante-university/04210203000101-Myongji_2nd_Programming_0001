@@ -1,9 +1,10 @@
 Shader "Example_21/E01SurfaceShader_21_02" {
-	Properties{
+	Properties {
 		_Color("Color", Color) = (1, 1, 1, 1)
 		_MainTex("Main Texture", 2D) = "white" { }
 	}
-	SubShader{
+
+	SubShader {
 		Tags {
 			"Queue" = "Geometry+1"
 			"RenderType" = "Opaque"

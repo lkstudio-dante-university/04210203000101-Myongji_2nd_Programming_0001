@@ -1,8 +1,9 @@
 Shader "Example_21/E01SurfaceShader_21_07" {
-	Properties{
+	Properties {
 		_Color("Color", Color) = (1, 1, 1, 1)
 	}
-	SubShader{
+
+	SubShader {
 		Tags {
 			"Queue" = "Geometry+1"
 			"RenderType" = "Opaque"
@@ -38,7 +39,9 @@ Shader "Example_21/E01SurfaceShader_21_07" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(SurfaceOutput a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(
+			SurfaceOutput a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+	
 			return float4(a_stOutput.Albedo, a_stOutput.Alpha);
 		}
 		ENDCG
@@ -75,7 +78,9 @@ Shader "Example_21/E01SurfaceShader_21_07" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(
+			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+	
 			float fDot = saturate(dot(a_stOutput.Normal, a_stLightDirection));
 			fDot = ceil(fDot * 2.0) / 2.0;
 

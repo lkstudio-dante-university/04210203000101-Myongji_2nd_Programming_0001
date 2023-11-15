@@ -1,11 +1,12 @@
 Shader "Example_21/E01SurfaceShader_21_09" {
-	Properties{
+	Properties {
 		_Refraction("Refraction", Range(-0.5, 0.5)) = 0
 
 		_Color("Color", Color) = (1, 1, 1, 1)
 		_NoiseTex("Noise Texture", 2D) = "white" { }
 	}
-	SubShader{
+
+	SubShader {
 		Tags {
 			"Queue" = "Transparent+1"
 			"RenderType" = "Transparent"
@@ -52,7 +53,9 @@ Shader "Example_21/E01SurfaceShader_21_09" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(
+			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+	
 			return float4(a_stOutput.Albedo, a_stOutput.Alpha) * _Color;
 		}
 		ENDCG

@@ -1,11 +1,12 @@
 Shader "Example_21/E01SurfaceShader_21_05" {
-	Properties{
+	Properties {
 		_Color("Color", Color) = (1, 1, 1, 1)
 		_FresnelColor("Fresnel Color", Color) = (1, 1, 1, 1)
 
 		_NormalTex("Normal Texture", 2D) = "bump" { }
 	}
-	SubShader{
+
+	SubShader {
 		Tags {
 			/*
 			* 유니티는 내부적으로 물체를 화면 상에 그릴 때 투명한 물체와 불투명한 물체를 처리하기
@@ -60,7 +61,9 @@ Shader "Example_21/E01SurfaceShader_21_05" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(
+			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+	
 			float fRim01 = pow(1.0 - saturate(dot(a_stOutput.Normal, a_stViewDirection)), 3.0);
 			float fRim02 = saturate(pow(frac(a_stOutput.m_stWorldPos.y * 0.01 - _Time.y), 5.0)) * 0.25;
 

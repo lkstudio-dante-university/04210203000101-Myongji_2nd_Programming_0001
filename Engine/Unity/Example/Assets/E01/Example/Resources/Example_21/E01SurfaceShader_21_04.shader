@@ -1,5 +1,5 @@
 Shader "Example_21/E01SurfaceShader_21_04" {
-	Properties{
+	Properties {
 		_Color("Color", Color) = (1, 1, 1, 1)
 		_FresnelColor("Fresnel Color", Color) = (1, 1, 1, 1)
 		_SpecularColor("Specular Color", Color) = (1, 1, 1, 1)
@@ -8,7 +8,8 @@ Shader "Example_21/E01SurfaceShader_21_04" {
 		_NormalTex("Normal Texture", 2D) = "bump" { }
 		_SpecularTex("Specular Texture", 2D) = "white" { }
 	}
-	SubShader{
+
+	SubShader {
 		Tags {
 			"Queue" = "Geometry+1"
 			"RenderType" = "Opaque"
@@ -26,7 +27,7 @@ Shader "Example_21/E01SurfaceShader_21_04" {
 		sampler2D _NormalTex;
 		sampler2D _SpecularTex;
 
-		/** 입력 */
+				/** 입력 */
 		struct Input {
 			float4 color;
 
@@ -35,7 +36,7 @@ Shader "Example_21/E01SurfaceShader_21_04" {
 			float2 uv_SpecularTex;
 		};
 
-		/** 출력 */
+				/** 출력 */
 		struct SurfaceOutputCustom {
 			float Gloss;
 			float Alpha;
@@ -68,8 +69,9 @@ Shader "Example_21/E01SurfaceShader_21_04" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(SurfaceOutputCustom a_stOutput, 
-			float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(
+			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+	
 			float3 stHalf = normalize(a_stLightDirection + a_stViewDirection);
 
 			float fDot = saturate(dot(a_stOutput.Normal, a_stLightDirection));

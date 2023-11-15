@@ -1,9 +1,10 @@
 Shader "Example_21/E01SurfaceShader_21_06" {
-	Properties{
+	Properties {
 		_Color("Color", Color) = (1, 1, 1, 1)
 		_AmbientTex("Ambient Texture", Cube) = "white" { }
 	}
-	SubShader{
+
+	SubShader {
 		Tags {
 			"Queue" = "Geometry+1"
 			"RenderType" = "Opaque"
@@ -45,7 +46,9 @@ Shader "Example_21/E01SurfaceShader_21_06" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(
+			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+	
 			return float4(a_stOutput.Albedo, a_stOutput.Alpha) * _Color;
 		}
 		ENDCG
