@@ -69,8 +69,8 @@ Shader "Example_21/E01SurfaceShader_21_04" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(
-			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(SurfaceOutputCustom a_stOutput, 
+			float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
 	
 			float3 stHalf = normalize(a_stLightDirection + a_stViewDirection);
 
@@ -79,7 +79,7 @@ Shader "Example_21/E01SurfaceShader_21_04" {
 			float fSpecular = saturate(dot(a_stOutput.Normal, stHalf));
 
 			float3 stFinalColor = a_stOutput.Albedo * fDot;
-			stFinalColor += _FresnelColor.rgb * pow(fRim, 10.0);
+			stFinalColor += _FresnelColor.rgb * pow(fRim, 5.0);
 			stFinalColor += _SpecularColor.rgb * pow(fSpecular, 30.0) * a_stOutput.m_stSpecular.r;
 
 			return float4(stFinalColor, a_stOutput.Alpha) * _Color;

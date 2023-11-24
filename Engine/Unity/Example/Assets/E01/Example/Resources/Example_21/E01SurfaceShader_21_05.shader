@@ -61,14 +61,13 @@ Shader "Example_21/E01SurfaceShader_21_05" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(
-			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(SurfaceOutputCustom a_stOutput, 
+			float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
 	
 			float fRim01 = pow(1.0 - saturate(dot(a_stOutput.Normal, a_stViewDirection)), 3.0);
 			float fRim02 = saturate(pow(frac(a_stOutput.m_stWorldPos.y * 0.01 - _Time.y), 5.0)) * 0.25;
 
-			float fAlpha = saturate(sin(_Time.y * 10000.0));
-			return float4(_FresnelColor.rgb, (fRim01 + fRim02) * fAlpha) * _Color;
+			return float4(_FresnelColor.rgb, fRim01 + fRim02) * _Color;
 		}
 		ENDCG
 	}

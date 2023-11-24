@@ -53,8 +53,8 @@ Shader "Example_21/E01SurfaceShader_21_09" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(
-			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(SurfaceOutputCustom a_stOutput, 
+			float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
 	
 			return float4(a_stOutput.Albedo, a_stOutput.Alpha) * _Color;
 		}

@@ -97,7 +97,7 @@ Shader "Example_21/E01SurfaceShader_21_08" {
 
 			float3 stFinalColor = a_stOutput.Albedo * fDot;
 			stFinalColor += _CutoutColor.rgb * fOutline;
-			stFinalColor += _FresnelColor.rgb * pow(fRim, 10.0);
+			stFinalColor += _FresnelColor.rgb * pow(fRim, 5.0);
 			stFinalColor += _SpecularColor.rgb * pow(fSpecular, 30.0) * a_stOutput.m_stSpecular.r;
 
 			return float4(stFinalColor, fAlpha) * _Color;

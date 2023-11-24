@@ -23,7 +23,7 @@ Shader "Example_21/E01SurfaceShader_21_03" {
 
 		sampler2D _MainTex;
 
-				/** 입력 */
+		/** 입력 */
 		struct Input {
 			float4 color;
 			float3 worldNormal;
@@ -47,7 +47,7 @@ Shader "Example_21/E01SurfaceShader_21_03" {
 			float3 Emission;
 		};
 
-				/** 서피스 쉐이더 */
+		/** 서피스 쉐이더 */
 		void SSMain(Input a_stInput, inout SurfaceOutputCustom a_stOutput) {
 			float4 stColor = tex2D(_MainTex, a_stInput.uv_MainTex);
 
@@ -56,8 +56,8 @@ Shader "Example_21/E01SurfaceShader_21_03" {
 		}
 
 		/** 광원을 처리한다 */
-		float4 LightingCustom(
-			SurfaceOutputCustom a_stOutput, float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
+		float4 LightingCustom(SurfaceOutputCustom a_stOutput, 
+			float3 a_stLightDirection, float3 a_stViewDirection, float a_fAttenuation) {
 	
 			float3 stHalf = normalize(a_stLightDirection + a_stViewDirection);
 
@@ -66,7 +66,7 @@ Shader "Example_21/E01SurfaceShader_21_03" {
 			float fSpecular = saturate(dot(a_stOutput.Normal, stHalf));
 
 			float3 stFinalColor = a_stOutput.Albedo * fDot;
-			stFinalColor += _FresnelColor.rgb * pow(fRim, 10.0);
+			stFinalColor += _FresnelColor.rgb * pow(fRim, 5.0);
 			stFinalColor += _SpecularColor.rgb * pow(fSpecular, 30.0);
 
 			return float4(stFinalColor, a_stOutput.Alpha) * _Color;

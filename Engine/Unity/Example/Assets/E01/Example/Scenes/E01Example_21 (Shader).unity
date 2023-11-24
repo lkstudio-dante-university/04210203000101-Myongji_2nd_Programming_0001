@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_oTarget01: {fileID: 443496010}
-  m_oTarget02: {fileID: 443496010}
+  m_oTarget02: {fileID: 1697521641}
   m_oTargetRoot: {fileID: 49401747}
 --- !u!1 &1267645907
 GameObject:
