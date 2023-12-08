@@ -15,6 +15,7 @@ using UnityEngine;
  * - Shader Lab
  * - Vertex / Fragment Shader
  * - Surface Shader
+ * - Shader Graph
  * 
  * Shader Lab 이란?
  * - Unity 가 자체적으로 지원하는 쉐이더 언어로서 해당 언어를 활용하면 간단하게 쉐이더를 제작하는 것이 가능하다.
@@ -35,6 +36,22 @@ using UnityEngine;
  * 
  * 해당 방식은 많은 부분이 Unity 에 의해서 자동으로 처리 되기 때문에 Vertex / Fragment Shader 방식에 비해서 적은 노력으로도
  * 준수한 퀄리티의 쉐이더를 제작 할 수 있다는 장점이 존재한다.
+ * 
+ * Shader Graph 란?
+ * - 명령문을 통해서 쉐이더를 작성하는 다른 방법과 달리 비주얼 툴을 이용해서 쉐이더를 제작하는 방식을 의미한다. (즉, 해당
+ * 방식을 활용하면 복잡한 명령문을 사용하지 않고도 퀄리티 좋은 쉐이더를 제작하는 것이 가능하다.)
+ * 
+ * 단, Shader Graph 는 Built-in 렌더링 파이프라인에서는 지원하지 않기 떄문에 해당 방식을 통해서 쉐이더를 제작하기 위해서는
+ * Universal or High Definition 렌더링 파이프라인을 사용해야한다.
+ * 
+ * 렌더링 파이프라인이란?
+ * - Unity 씬 상에 배치 된 물체가 화면 상에 출력되기 위해서 거치는 일련의 단계를 의미한다. (즉, 특정 물체가 화면 상에
+ * 출력되기 위해서는 여러 가지 과정이 필요하며 이 중 특정 과정을 제어하는 것은 쉐이더를 통해서 가능하다.)
+ * 
+ * Unity 렌더링 파이프라인 종류
+ * - Built-in
+ * - Universal
+ * - High Definition
  */
 namespace E01 {
 	/** Example 21 */
@@ -63,7 +80,7 @@ namespace E01 {
 			base.Update();
 
 			// 스페이스 키를 눌렀을 경우
-			if(Input.GetKeyDown(KeyCode.Space))  {
+			if(Input.GetKeyDown(KeyCode.Space)) {
 				m_fRefraction = 0.0f;
 			}
 

@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 namespace E01 {
 	/** 씬 관리자 */
 	public abstract partial class CE01SceneManager : CE01Component {
+		#region 클래스 변수
+		private static Dictionary<string, CE01SceneManager> m_oSceneManagerDict = new Dictionary<string, CE01SceneManager>();
+		#endregion // 클래스 변수
+
 		#region 프로퍼티
 		public abstract string SceneName { get; }
 
@@ -39,6 +43,18 @@ namespace E01 {
 
 			Physics.gravity = KE01Define.G_PHYSICS_GRAVITY;
 			Application.targetFrameRate = Mathf.RoundToInt((float)Screen.currentResolution.refreshRateRatio.value);
+
+			CE01SceneManager.m_oSceneManagerDict.TryAdd(this.SceneName, this);
+		}
+
+		/** 제거 되었을 경우 */
+		public override void OnDestroy() {
+			base.OnDestroy();
+
+			// 씬 관리자가 존재 할 경우
+			if(CE01SceneManager.m_oSceneManagerDict.ContainsKey(this.SceneName)) {
+				CE01SceneManager.m_oSceneManagerDict.Remove(this.SceneName);
+			}
 		}
 
 		/** 상태를 갱신한다 */
@@ -84,5 +100,12 @@ namespace E01 {
 			this.UIsEventSystem?.gameObject.SetActive(this.IsActiveScene);
 		}
 		#endregion // 함수
+
+		#region 제네릭 함수
+		/** 씬 관리자를 반환한다 */
+		public static T GetSceneManager<T>(string a_oSceneName) where T : CE01SceneManager {
+			return CE01SceneManager.m_oSceneManagerDict.GetValueOrDefault(a_oSceneName) as T;
+		}
+		#endregion // 제네릭 함수
 	}
 }

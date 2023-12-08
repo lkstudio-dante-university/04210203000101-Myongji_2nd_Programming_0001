@@ -71,4 +71,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/E01/Example/Scenes/E01Example_21 (Shader).unity
     guid: 767c9a535ad7d7b458fc4bcd0ca44e48
+  - enabled: 1
+    path: Assets/E01/Example/Scenes/E01Example_22 (3D TPS - Start).unity
+    guid: f04d3354dea3a7b468f9ebc0dcb94db2
+  - enabled: 1
+    path: Assets/E01/Example/Scenes/E01Example_23 (3D TPS - Play).unity
+    guid: fb3af99aaed5a134ebc4c33d635ad772
+  - enabled: 1
+    path: Assets/E01/Example/Scenes/E01Example_24 (3D TPS - Result).unity
+    guid: f09c61ede33d65f4da17eaa3c46bea7e
+  - enabled: 1
+    path: Assets/E01/Example/Scenes/E01Example_25 (Sound).unity
+    guid: 7e9a11d2e82014646a9d8b59e0a0deb4
+  - enabled: 1
+    path: Assets/E01/Example/Scenes/E01Example_26 (Particle).unity
+    guid: 809557246c1d01141ac8b609ebf23b7a
   m_configObjects: {}

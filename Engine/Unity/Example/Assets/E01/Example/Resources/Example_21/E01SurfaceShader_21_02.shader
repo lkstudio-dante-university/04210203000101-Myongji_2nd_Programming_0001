@@ -26,8 +26,8 @@ Shader "Example_21/E01SurfaceShader_21_02" {
 		/** 서피스 쉐이더 */
 		void SSMain(Input a_stInput, inout SurfaceOutputStandard a_stOutput) {
 			/*
-			* tex2D 함수는 특정 텍스처로부터 정보를 가져오는 역할을 수행한다. (즉, 색상 정보를
-			* 지니고 있는 텍스처 일 경우 색상 정보를 가져온다는 것을 알 수 있다.)
+			* tex2D 함수는 특정 텍스처로부터 정보를 가져오는 역할을 수행한다. (즉, 색상 정보를 지니고 있는 텍스처 일 경우 
+			* 색상 정보를 가져온다는 것을 알 수 있다.)
 			*/
 			float4 stColor = tex2D(_MainTex, a_stInput.uv_MainTex);
 

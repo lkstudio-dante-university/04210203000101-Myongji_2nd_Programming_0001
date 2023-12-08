@@ -46,6 +46,8 @@ namespace E01 {
 		public const string G_SCENE_N_EXAMPLE_22 = "E01Example_22 (3D TPS - Start)";
 		public const string G_SCENE_N_EXAMPLE_23 = "E01Example_23 (3D TPS - Play)";
 		public const string G_SCENE_N_EXAMPLE_24 = "E01Example_24 (3D TPS - Result)";
+		public const string G_SCENE_N_EXAMPLE_25 = "E01Example_25 (Sound)";
+		public const string G_SCENE_N_EXAMPLE_26 = "E01Example_26 (Particle)";
 		#endregion // 기본
 	}
 }
