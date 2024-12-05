@@ -26,7 +26,7 @@ namespace Example
 		public virtual void Init()
 		{
 			m_oTrail.Clear();
-			m_oRigidbody.velocity = Vector3.zero;
+			m_oRigidbody.linearVelocity = Vector3.zero;
 		}
 
 		/** 충돌이 시작 되었을 경우 */

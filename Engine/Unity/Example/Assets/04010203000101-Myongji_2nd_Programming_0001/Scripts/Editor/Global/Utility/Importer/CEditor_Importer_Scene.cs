@@ -59,7 +59,7 @@ public static partial class CEditor_Importer_Scene
 			KEditor_Define.G_P_DIR_SEARCH_SCENE
 		});
 
-		var oListEditorBuildSettingsScenes = new List<EditorBuildSettingsScene>();
+		var oListScenes_EditorBuildSettings = new List<EditorBuildSettingsScene>();
 
 		for(int i = 0; i < oGUIDs.Length; ++i)
 		{
@@ -72,11 +72,11 @@ public static partial class CEditor_Importer_Scene
 				continue;
 			}
 
-			var oEditorBuildSettingsScene = new EditorBuildSettingsScene(oPath_File, true);
-			oListEditorBuildSettingsScenes.Add(oEditorBuildSettingsScene);
+			var oScene_EditorBuildSettings = new EditorBuildSettingsScene(oPath_File, true);
+			oListScenes_EditorBuildSettings.Add(oScene_EditorBuildSettings);
 		}
 
-		EditorBuildSettings.scenes = oListEditorBuildSettingsScenes.ToArray();
+		EditorBuildSettings.scenes = oListScenes_EditorBuildSettings.ToArray();
 	}
 	#endregion // 클래스 함수
 }

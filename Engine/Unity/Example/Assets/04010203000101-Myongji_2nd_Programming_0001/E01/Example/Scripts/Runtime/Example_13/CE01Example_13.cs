@@ -82,7 +82,7 @@ namespace Example
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				var oRigidbody = m_oTarget.GetComponent<Rigidbody>();
-				oRigidbody.velocity = Vector3.zero;
+				oRigidbody.linearVelocity = Vector3.zero;
 				oRigidbody.AddForce(Vector3.up * 1000.0f, ForceMode.VelocityChange);
 			}
 
