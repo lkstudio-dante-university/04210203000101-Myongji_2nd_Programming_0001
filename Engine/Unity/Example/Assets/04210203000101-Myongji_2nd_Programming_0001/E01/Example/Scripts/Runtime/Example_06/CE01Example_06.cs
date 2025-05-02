@@ -50,13 +50,13 @@ namespace Example
 				oListValues01.Add(i + 1);
 			}
 
-			Debug.Log("=====> 리스트 요소 - 1 <=====");
+			Debug.Log("=====> 리스트 - 1 <=====");
 
 			for(int i = 0; i < oListValues01.Count; ++i) {
 				Debug.Log($"{oListValues01[i]}");
 			}
 
-			Debug.Log("=====> 리스트 요소 - 2 <=====");
+			Debug.Log("=====> 리스트 - 2 <=====");
 
 			for(int i = 0; i < oListValues02.Count; ++i) {
 				Debug.Log($"{oListValues02[i]}");
@@ -73,7 +73,7 @@ namespace Example
 				oDictValues01.Add(oKey, i + 1);
 			}
 
-			Debug.Log("=====> 딕셔너리 요소 - 1 <=====");
+			Debug.Log("=====> 딕셔너리 - 1 <=====");
 
 			/*
 			 * foreach 반복문이란?
@@ -84,7 +84,7 @@ namespace Example
 				Debug.Log($"[{stKeyVal.Key}]:{stKeyVal.Value}");
 			}
 
-			Debug.Log("=====> 딕셔너리 요소 - 2 <=====");
+			Debug.Log("=====> 딕셔너리 - 2 <=====");
 
 			foreach(var stKeyVal in oDictValues02) {
 				Debug.Log($"[{stKeyVal.Key}]:{stKeyVal.Value}");
